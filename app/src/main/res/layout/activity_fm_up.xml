@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.FmUpActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="上传FM"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/uploadTv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="完成"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_round_small"
+        android:elevation="01dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/faceIv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_add_3"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintLeft_toRightOf="@+id/guideline6"
+            app:layout_constraintRight_toLeftOf="@id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/fmAuthorEdit" />
+
+        <TextView
+            android:id="@+id/fileTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:autoSizeMaxTextSize="10dp"
+            android:background="@drawable/shape_edit_tw_1"
+            android:gravity="center"
+            android:text="上传音频文件"
+            android:textColor="@color/colorPrimary"
+
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineLeft"
+            app:layout_constraintRight_toLeftOf="@id/guidelineRight"
+            app:layout_constraintTop_toTopOf="@id/faceIv" />
+
+        <EditText
+            android:id="@+id/titleEdit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/shape_edit1"
+            android:hint="请输入标题"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:text=""
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/secTitleEdit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <EditText
+            android:id="@+id/secTitleEdit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_edit1"
+            android:hint="请输入副标题"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/fmAuthorEdit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleEdit" />
+
+
+        <EditText
+            android:id="@+id/fmAuthorEdit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_edit1"
+            android:hint="请输入主播名称"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textSize="14dp"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/secTitleEdit" />
+
+        <RadioGroup
+            android:id="@+id/typeRG"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fileTv">
+
+            <RadioButton
+                android:id="@+id/rbQxgl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorPrimary"
+                android:text="情绪管理"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <RadioButton
+                android:id="@+id/rbRjgx"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorPrimary"
+                android:text="人际关系"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <RadioButton
+                android:id="@+id/rbXlkp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorPrimary"
+                android:text="心理科普"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+
+            <RadioButton
+                android:id="@+id/rbKcjz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/colorPrimary"
+                android:text="课程讲座"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp" />
+        </RadioGroup>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

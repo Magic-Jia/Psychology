@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#48A8FF</color>
+    <color name="colorPrimary50">#8048A8FF</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#F7F7F7</color>
+
+    <color name="black">#000</color>
+    <color name="health">#00C853</color>
+    <color name="warn">#FFAB00</color>
+    <color name="danger">#DD2C00</color>
+    <color name="bfbfbf">#bfbfbf</color>
+
+</resources>

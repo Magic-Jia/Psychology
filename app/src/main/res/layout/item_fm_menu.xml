@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iconView"
+
+        android:src="@drawable/ic_qxgl"
+        android:layout_width="43dp"
+        android:layout_height="43dp"/>
+
+    <TextView
+        android:id="@+id/actionTv"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:text="人际沟通"
+        android:textSize="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

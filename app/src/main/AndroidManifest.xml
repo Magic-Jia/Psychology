@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ui.activity.ImageActivity">
+
+        </activity>
+        <activity android:name=".ui.activity.MyFmActivity" />
+        <activity android:name=".ui.activity.SearchActivity" />
+        <activity
+            android:name=".ui.activity.OnlineChatActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activity.UpBookActivity" />
+        <activity android:name=".ui.activity.BookActivity" />
+        <activity android:name=".ui.activity.FmListActivity" />
+        <activity android:name=".ui.activity.FmUpActivity" />
+        <activity android:name=".ui.activity.MusicActivity" />
+        <activity android:name=".ui.activity.FMActivity" />
+        <activity android:name=".ui.activity.QuestionDetailActivity" />
+        <activity android:name=".ui.activity.AnswerActivity" />
+        <activity android:name=".ui.activity.RaiseQuestionActivity" />
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.ShareDetailActivity" />
+        <activity android:name=".ui.activity.MainActivity">
+
+        </activity>
+
+        <service android:name=".service.MusicService" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.dododo.psychology.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.TestActivity" />
+        <activity android:name=".ui.activity.ActivityCenterActivity" />
+        <activity android:name=".ui.activity.TestRecordActivity" />
+        <activity android:name=".ui.activity.ShareFeelingActivity" />
+        <activity android:name=".ui.activity.ShareFeelingRecordActivity" />
+
+        <activity android:name=".ui.activity.MyBookActivity" />
+    </application>
+
+</manifest>
