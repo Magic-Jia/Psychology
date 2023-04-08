@@ -59,8 +59,8 @@
         android:textColorHint="#CCCCCC"
         android:textSize="14dp" />
 
-    <!--<TextView
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>-->
+        android:layout_height="wrap_content"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
