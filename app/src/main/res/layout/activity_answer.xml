@@ -59,6 +59,5 @@
         android:textColorHint="#CCCCCC"
         android:textSize="14dp" />
 
-    <!-- 贾哥-->
-    <!--贾哥2-->
+
 </androidx.appcompat.widget.LinearLayoutCompat>
