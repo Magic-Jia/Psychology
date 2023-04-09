@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_boar"
     android:orientation="vertical">
-
     <!--注册-->
     <RelativeLayout
         android:id="@+id/titleBar"
@@ -22,7 +21,6 @@
             android:layout_height="50dp"
             android:padding="10dp"
             android:src="@drawable/ic_back" />
-
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
