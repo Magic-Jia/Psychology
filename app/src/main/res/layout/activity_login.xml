@@ -7,7 +7,7 @@
     android:background="@drawable/ic_loveheart"
     android:orientation="vertical">
     <!--登录-->
-
+<!--    贾旭明-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
