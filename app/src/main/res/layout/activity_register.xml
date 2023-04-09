@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@drawable/ic_boar"
     android:orientation="vertical">
+
     <!--注册-->
     <RelativeLayout
         android:id="@+id/titleBar"
@@ -28,7 +29,7 @@
             android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="注册"
+            android:text="用户注册"
             android:textColor="#fff"
             android:textSize="20dp" />
 
@@ -52,16 +53,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/shape_login"
         android:orientation="vertical"
         android:padding="15dp"
         android:transitionName="loginContent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576">
 
         <LinearLayout
             android:id="@+id/phoneContent"
@@ -182,16 +182,16 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/shape_round"
-        android:gravity="center"
         android:elevation="1dp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/registerContent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/registerContent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="90dp"
             android:id="@+id/headView"
+            android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/ic_up_head" />
     </androidx.appcompat.widget.LinearLayoutCompat>

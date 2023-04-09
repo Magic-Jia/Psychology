@@ -9,7 +9,6 @@ import com.xf.psychology.bean.UserBean;
 
 import java.util.List;
 
-
 @Dao
 public interface UserDao {
     @Insert(entity = UserBean.class)
