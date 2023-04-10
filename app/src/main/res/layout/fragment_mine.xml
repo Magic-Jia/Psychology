@@ -124,7 +124,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_test" />
+                    android:src="@drawable/ic_test1" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -91,7 +91,7 @@
                             <ImageView
                                 android:layout_width="43dp"
                                 android:layout_height="43dp"
-                                android:src="@drawable/ic_test" />
+                                android:src="@drawable/ic_test1" />
 
 
                             <TextView
@@ -142,14 +142,14 @@
                             <ImageView
                                 android:layout_width="43dp"
                                 android:layout_height="43dp"
-                                android:src="@drawable/ic_msg" />
+                                android:src="@drawable/ic_advice" />
 
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="心理活动中心"
+                                android:text="心理咨询"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
                         </LinearLayout>
