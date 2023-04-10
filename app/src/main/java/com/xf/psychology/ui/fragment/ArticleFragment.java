@@ -74,10 +74,10 @@ public class ArticleFragment extends BaseFragment {
         articles.add(new Article("抑郁症得到改善会有哪些迹象", "随着抑郁症越来越多被更多人了解，我们也发现，身边的不少人正在受抑郁症困扰，今天这篇文章是给那些正在“恢复”中的朋友的，也许你正在慢慢好转。祝你早日回归正常生活！",
                 R.drawable.arti1_2,
                 R.drawable.arti1_1));
-        articles.add(new Article("心理科普│大学生恋爱心理",
-                "近些年，不少高校开设了以恋爱为主题的课程，授课教师希望以此培养学生“健康的爱情观\"。根据中国青年报10月12日报",
-                R.drawable.lianaixinli2,
-                R.drawable.lianaixinli_f_2));
+        articles.add(new Article("幸福生活的7个小习惯",
+                "近年来，在术后康复中心、生活养生馆等场所，我们经常会听到专业人士提及“生活方式医学”这个热点词。其实，生活方式不仅仅是吃好一点、睡好一点，它已经上升到了医学调节的高度。",
+                R.drawable.arti2_2,
+                R.drawable.arti2_1));
         articles.add(new Article("心理小知识|大学生的恋爱心理", "恋爱已成为当代大学生最为关注和最想尝试的事情之一，由于大学生的心智正处于逐渐成熟的阶段，幼稚性和成熟性并存，因此恋爱过程中常伴随着各种心理问题。从现实表现来看，一些大学生不能处理好恋爱中的关系，从而引发多种心理困惑，严重影响了大学生的身心健康发展。",
                 R.drawable.lianaixinli3,
                 R.drawable.lianaixinli_f_3));
