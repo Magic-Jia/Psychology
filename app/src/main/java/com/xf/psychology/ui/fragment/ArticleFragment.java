@@ -71,9 +71,9 @@ public class ArticleFragment extends BaseFragment {
     @Override
     protected void initData() {
 
-        articles.add(new Article("生活中的心理学|大学生恋爱心理特征", "爱情是人类永恒的话题，也是大学校园内一道亮丽的风景线。正值青春期的大学生，生理趋于成熟，卸下了高中学业的重压，免除了老师家长的约束，由于情感的需要及周围环境的影响，大学生们渴望爱情，想谈恋爱已成为一种较普遍的心理。对于文",
-                R.drawable.lianaixinli1,
-                R.drawable.lianaixinli_f_1));
+        articles.add(new Article("抑郁症得到改善会有哪些迹象", "随着抑郁症越来越多被更多人了解，我们也发现，身边的不少人正在受抑郁症困扰，今天这篇文章是给那些正在“恢复”中的朋友的，也许你正在慢慢好转。祝你早日回归正常生活！",
+                R.drawable.arti1_2,
+                R.drawable.arti1_1));
         articles.add(new Article("心理科普│大学生恋爱心理",
                 "近些年，不少高校开设了以恋爱为主题的课程，授课教师希望以此培养学生“健康的爱情观\"。根据中国青年报10月12日报",
                 R.drawable.lianaixinli2,
