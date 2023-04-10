@@ -77,22 +77,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="账号："
-                android:textColor="#fff"
+                android:textColor="#009688"
                 android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/phoneEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00000000"
+                android:background="#65EC816F"
                 android:hint="请输入手机号"
                 android:inputType="phone"
                 android:maxLength="11"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="14dp" />
         </LinearLayout>
 
@@ -112,22 +112,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="密码："
-                android:textColor="#fff"
+                android:textColor="#009688"
                 android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/pwdEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00000000"
+                android:background="#74F3E37F"
                 android:hint="请输入密码"
                 android:inputType="textPassword"
                 android:maxLength="6"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="14dp" />
         </LinearLayout>
 
@@ -145,20 +145,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="昵称："
-                android:textColor="#fff"
+                android:textColor="#009688"
                 android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/nameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00000000"
+                android:background="#85ABD46E"
                 android:hint="请输入昵称"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="14dp" />
         </LinearLayout>
 
