@@ -67,7 +67,6 @@ public class App extends Application {
 
             /*----------------------------FM----------------------------------------*/
             insertFm1();
-
             insertFm2();
             insertFm3();
         }

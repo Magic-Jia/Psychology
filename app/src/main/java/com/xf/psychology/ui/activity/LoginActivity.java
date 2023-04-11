@@ -116,7 +116,5 @@ public class LoginActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
         phoneContent = findViewById(R.id.phoneContent);
         pwdContent = findViewById(R.id.pwdContent);
-
-
     }
 }

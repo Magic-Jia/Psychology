@@ -22,7 +22,11 @@ public class DBCreator {
     private static MyDB db;
     public static void init() {
         if (db == null) {
-            db = Room.databaseBuilder(App.getContext(), MyDB.class, "psychology_db_xf").allowMainThreadQueries().build();
+            db = Room.databaseBuilder(App.getContext(),
+                    MyDB.class,
+                    "psychology_db_xf")
+                    .allowMainThreadQueries()
+                    .build();
         }
     }
 
