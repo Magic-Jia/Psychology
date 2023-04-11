@@ -84,7 +84,9 @@ public class ArticleFragment extends BaseFragment {
         articles.add(new Article("青少年保持心理健康--请你这样做", "青年学生正处在从青年向成人转化的重要时期，正逐渐从依赖父母的心理状态中独立出来",
                 R.drawable.arti4_2,
                 R.drawable.arti4_1));
-
+        articles.add(new Article("情绪闪回|久违的心理学小科普", "在此之前，我几乎忘了这些事情",
+                R.drawable.arti5_2,
+                R.drawable.arti5_1));
 
 
         recycler.setAdapter(adapter);
