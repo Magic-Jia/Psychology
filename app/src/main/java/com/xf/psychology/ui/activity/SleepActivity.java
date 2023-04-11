@@ -12,9 +12,11 @@ import android.widget.RelativeLayout;
 
 import com.xf.psychology.R;
 import com.xf.psychology.ui.NbButton;
+import com.xf.psychology.ui.NbButton1;
 
 public class SleepActivity extends AppCompatActivity {
     private NbButton button;
+    private NbButton1 Button_Start;
     private RelativeLayout rlContent;
     private Handler handler;
     private Animator animator;
@@ -22,18 +24,21 @@ public class SleepActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
-
         button=findViewById(R.id.button_test);
         rlContent=findViewById(R.id.rl_content);
-
+        Button_Start = findViewById(R.id.btn_start_sleep);
         rlContent.getBackground().setAlpha(0);
         handler=new Handler();
+        Button_Start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button.startAnim();
-
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -51,7 +56,6 @@ public class SleepActivity extends AppCompatActivity {
         button.gotoNew();
 
         final Intent intent=new Intent(this,MainActivity.class); //进行设定
-
         int xc=(button.getLeft()+button.getRight())/2;
         int yc=(button.getTop()+button.getBottom())/2;
         animator= ViewAnimationUtils.createCircularReveal(rlContent,xc,yc,0,1111);
@@ -95,4 +99,5 @@ public class SleepActivity extends AppCompatActivity {
         rlContent.getBackground().setAlpha(0);
         button.regainBackground();
     }
+
 }
