@@ -7,6 +7,7 @@
     android:background="@drawable/ic_board"
     android:orientation="vertical">
     <!--注册-->
+    <!--ALkran-->
     <RelativeLayout
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
