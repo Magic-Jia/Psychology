@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.SleepActivity"
             android:exported="true" />
-        <activity android:name=".ui.activity.ImageActivity"></activity>
+        <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
         <activity
@@ -37,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.ShareDetailActivity" />
-        <activity android:name=".ui.activity.MainActivity"></activity>
+        <activity android:name=".ui.activity.MainActivity" />
 
         <service android:name=".service.MusicService" />
 

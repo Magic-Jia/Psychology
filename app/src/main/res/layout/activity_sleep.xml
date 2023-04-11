@@ -5,18 +5,99 @@
     android:background="@drawable/ic_moon"
     android:orientation="vertical"
     >
-    <ImageView
-        android:id="@+id/backBtn"
-        android:layout_width="50dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_back" />
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="睡眠助手"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rl_content"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:background="@color/cutePink"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="92dp"
+            android:text="闹钟未设置"
+            android:textColor="@color/white"
+            android:textSize="50dp"></TextView>
+
+        <TextView
+            android:id="@+id/tv_sleep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="150dp"
+            android:text="@string/sleep_time"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <com.xf.psychology.ui.NbButton1
+            android:id="@+id/btn_start_sleep"
+            android:layout_width="221dp"
+            android:dither="true"
+            android:shape="rectangle"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sleep_time"
+            android:textColor="@color/white"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="111dp"
+            android:layout_marginTop="297dp"
+            android:text="@string/start_button" />
+
+        <TextView
+            android:id="@+id/tv_decibel"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="259dp"
+            android:layout_marginBottom="185dp"
+            android:text="@string/decebel"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_sleep_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="303dp"
+            android:text="@string/sleep_status"
+            android:textSize="24sp" />
+
         <com.xf.psychology.ui.NbButton
             android:id="@+id/button_test"
             android:background="@color/cutePink"
@@ -26,7 +107,6 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="113dp"
             android:layout_marginBottom="20dp"
-            android:text="开始睡眠"
             android:textColor="#fff" />
     </RelativeLayout>
 
