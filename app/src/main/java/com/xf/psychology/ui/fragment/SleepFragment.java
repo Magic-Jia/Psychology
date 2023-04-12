@@ -70,7 +70,7 @@ public class SleepFragment extends Fragment {
 
     private static final int SAMPLE_RATE = 44100;
     private static final int SAMPLE_DELAY_MS = 1000;
-    private static final int LOUDNESS_THRESHOLD = 5000;
+    private static final int LOUDNESS_THRESHOLD = 6000;
 
     private Handler handler1;
     private Runnable sampleRunnable;
