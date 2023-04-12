@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".ReportActivity"
+            android:name=".ui.activity.report"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.SleepActivity"
+            android:name=".ui.activity.ReportActivity"
             android:exported="true" />
+<!--        <activity
+            android:name=".ui.activity.SleepActivity"
+            android:exported="true" />-->
         <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
