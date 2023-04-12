@@ -155,7 +155,7 @@ public class App extends Application {
         bookBean.whyWant = "体现实践应用的前景,中外相关心理咨询经典案例";
         bookBean.facePicPath = "https://www.wanwupai.com/upload/product/20190916-1/15f83cdd295ca0a9fd511ebc9e1f649a.jpg";
         bookBean.upId = 2;
-        bookBean.upName = "贾旭明";
+        bookBean.upName = "杜瑞翔";
         DBCreator.getBookDao().insert(bookBean);
     }
 

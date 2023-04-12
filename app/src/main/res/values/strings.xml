@@ -7,4 +7,5 @@
     <string name="sleep_status">睡眠状态</string>
     <string name="sleep_time">睡眠时间</string>
     <string name="decebel">分贝数</string>
+    <string name="deep_ratio">深度睡眠所占比率: </string>
 </resources>

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.xf.psychology.R;
 
 
-public class ReportActivity extends AppCompatActivity {
+public class report extends AppCompatActivity {
     private int awakeTime = 0;
     private int lightSleepTime = 0;
     private int deepSleepTime = 0;
