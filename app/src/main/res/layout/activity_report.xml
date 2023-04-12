@@ -5,6 +5,30 @@
     android:orientation="vertical">
 
     <!-- Your other views here -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/deep_sleep_ratio_textview"
@@ -12,5 +36,17 @@
         android:layout_height="wrap_content"
         android:text="@string/deep_ratio"
         android:textSize="16sp" />
+    <TextView
+        android:id="@+id/onbed_sleep_ratio_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bedtime"
+        android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/indeed_sleep_ratio_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/useful_time"
+        android:textSize="16sp" />
 </LinearLayout>

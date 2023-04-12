@@ -8,4 +8,6 @@
     <string name="sleep_time">睡眠时间</string>
     <string name="decebel">分贝数</string>
     <string name="deep_ratio">深度睡眠所占比率: </string>
+    <string name="bedtime">在床时长 </string>
+    <string name="useful_time">有效睡眠时长 </string>
 </resources>
