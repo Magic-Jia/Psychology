@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.activity.ImageActivity">
-
-        </activity>
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SleepActivity"
+            android:exported="true" />
+        <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
         <activity
@@ -36,9 +40,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.ShareDetailActivity" />
-        <activity android:name=".ui.activity.MainActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.MainActivity" />
 
         <service android:name=".service.MusicService" />
 
@@ -59,7 +61,6 @@
         <activity android:name=".ui.activity.TestRecordActivity" />
         <activity android:name=".ui.activity.ShareFeelingActivity" />
         <activity android:name=".ui.activity.ShareFeelingRecordActivity" />
-
         <activity android:name=".ui.activity.MyBookActivity" />
     </application>
 
