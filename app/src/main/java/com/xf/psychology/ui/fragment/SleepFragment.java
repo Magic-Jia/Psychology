@@ -55,6 +55,8 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
+
 public class SleepFragment extends Fragment {
     private NbButton button;
     private NbButton1 Button_Start;
@@ -141,7 +143,9 @@ public class SleepFragment extends Fragment {
                                 textView2.setText("清醒");
                             }
                             textView.setText("清醒时间：" + awakeTime / 1000 + "秒\n浅睡眠时间：" + lightSleepTime / 1000 + "秒\n深睡眠时间：" + deepSleepTime / 1000 + "秒");
-                            textView3.setText("当前分贝值：" + 20*Math.log10(amplitude));
+                            double voice = (20*Math.log10(amplitude));
+                            String result = String .format("%.0f",voice);
+                            textView3.setText("当前分贝值：" + result);
                             handler1.postDelayed(this, SAMPLE_DELAY_MS);
                         }
                     }
@@ -165,11 +169,6 @@ public class SleepFragment extends Fragment {
                 // The first parameter is the current context (in this case, MainActivity.this)
                 // The second parameter is the class of the activity we want to start (in this case, Report.class)
                 // We then call startActivity() with the intent as the parameter to start the new activity
-                Intent intent = new Intent(getActivity(), ReportActivity.class);
-                intent.putExtra("awaketime",awakeTime/1000);
-                intent.putExtra("lightsleeptime",lightSleepTime/1000);
-                intent.putExtra("deepsleeptime",deepSleepTime/1000);
-                startActivity(intent);
                 button.startAnim();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -183,14 +182,14 @@ public class SleepFragment extends Fragment {
                 deepSleepTime=0;
             }
         });
-
         return root;
     }
-
     private void gotoNew() {
         button.gotoNew();
-
-        final Intent intent = new Intent(getActivity(), MainActivity.class); //进行设定
+        Intent intent = new Intent(getActivity(), ReportActivity.class);
+        intent.putExtra("awaketime",awakeTime/1000);
+        intent.putExtra("lightsleeptime",lightSleepTime/1000);
+        intent.putExtra("deepsleeptime",deepSleepTime/1000);
         int xc = (button.getLeft() + button.getRight()) / 2;
         int yc = (button.getTop() + button.getBottom()) / 2;
         animator = ViewAnimationUtils.createCircularReveal(rlContent,xc,yc,0,1111);
