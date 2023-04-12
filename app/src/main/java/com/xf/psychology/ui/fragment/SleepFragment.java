@@ -154,6 +154,7 @@ public class SleepFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isRecording == false) return;
                 isRecording = false;
                 recorder.stop();
                 recorder.release();
