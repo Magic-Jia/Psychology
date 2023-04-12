@@ -38,16 +38,16 @@ public class SleepFragment extends Fragment {
 
         button = root.findViewById(R.id.button_test);
         rlContent = root.findViewById(R.id.rl_content);
-//        Button_Start = root.findViewById(R.id.btn_start_sleep);
+        Button_Start = root.findViewById(R.id.btn_start_sleep);
         rlContent.getBackground().setAlpha(0);
         handler = new Handler();
 
-//        Button_Start.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Do something
-//            }
-//        });
+        Button_Start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Do something
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

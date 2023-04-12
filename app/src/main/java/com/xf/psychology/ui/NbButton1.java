@@ -58,7 +58,7 @@ public class NbButton1 extends androidx.appcompat.widget.AppCompatButton {
         backDrawable.setCornerRadius(120);
         setBackground(backDrawable);
 
-        setText("登陆");
+        setText("开始睡眠");
 
         paint=new Paint();
         paint.setColor(getResources().getColor(R.color.white));
@@ -121,7 +121,7 @@ public class NbButton1 extends androidx.appcompat.widget.AppCompatButton {
         backDrawable.setBounds(0,0,width,heigh);
         backDrawable.setCornerRadius(24);
         setBackground(backDrawable);
-        setText("登陆");
+        setText("开始睡眠");
         isMorphing=false;
     }
 
