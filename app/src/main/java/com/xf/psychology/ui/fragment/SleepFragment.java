@@ -1,64 +1,64 @@
 package com.xf.psychology.ui.fragment;
 
 import android.animation.Animator;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewAnimationUtils;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.xf.psychology.App;
 import com.xf.psychology.R;
+import com.xf.psychology.base.BaseFragment;
+import com.xf.psychology.db.DBCreator;
 import com.xf.psychology.ui.NbButton;
 import com.xf.psychology.ui.NbButton1;
 import com.xf.psychology.ui.activity.MainActivity;
 import com.xf.psychology.ui.activity.ReportActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
-import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.MediaRecorder;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
-public class SleepFragment extends Fragment {
-    private NbButton button;
+
+public class SleepFragment extends BaseFragment {
+    private NbButton button_stop;
     private NbButton1 Button_Start;
+
+
+    //new wave
+    private AudioRecord mAudioRecord;
+    private int mBufferSize;
+    private short[] mAudioBuffer;
+    private Paint mPaint;
+    private Bitmap mBitmap;
+    private Canvas mCanvas;
+    private ImageView mWaveformView;
+
+
+
     private androidx.constraintlayout.widget.ConstraintLayout rlContent;
     private Handler handler;
     private Animator animator;
@@ -71,16 +71,17 @@ public class SleepFragment extends Fragment {
 
     private static final int SAMPLE_RATE = 44100;
     private static final int SAMPLE_DELAY_MS = 1000;
+    private static final int BUFFER_SIZE = 1024;
+    private static final int RECORD_AUDIO_REQUEST_CODE = 1;
     private static final int LOUDNESS_THRESHOLD = 6000;
 
     private Handler handler1;
     private Runnable sampleRunnable;
-
-    private Button buttonStart;
-    private Button buttonStop;
     private TextView textView;
     private TextView textView2;
     private TextView textView3;
+    private Thread thread;
+
     public static SleepFragment newInstance() {
         Bundle args = new Bundle();
         SleepFragment fragment = new SleepFragment();
@@ -95,7 +96,25 @@ public class SleepFragment extends Fragment {
             requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
         }
 
-        button = root.findViewById(R.id.button_test);
+        //wave
+        mPaint = new Paint();
+        mPaint.setColor(Color.GREEN);
+        mWaveformView = root.findViewById(R.id.waveform_view);
+
+        mBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+        mAudioBuffer = new short[mBufferSize];
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.RECORD_AUDIO}, RECORD_AUDIO_REQUEST_CODE);
+        } else {
+            mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, mBufferSize);
+            mAudioRecord.startRecording();
+        }
+        mBitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas(mBitmap);
+        //end
+
+
+        button_stop = root.findViewById(R.id.button_test);
         rlContent = root.findViewById(R.id.rl_content);
         Button_Start = root.findViewById(R.id.btn_start_sleep);
         rlContent.getBackground().setAlpha(0);
@@ -155,7 +174,7 @@ public class SleepFragment extends Fragment {
 
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isRecording == false) return;
@@ -169,10 +188,11 @@ public class SleepFragment extends Fragment {
                 // The first parameter is the current context (in this case, MainActivity.this)
                 // The second parameter is the class of the activity we want to start (in this case, Report.class)
                 // We then call startActivity() with the intent as the parameter to start the new activity
-                button.startAnim();
+                button_stop.startAnim();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        thread.interrupt();
                         //跳转
                         gotoNew();
                     }
@@ -184,14 +204,38 @@ public class SleepFragment extends Fragment {
         });
         return root;
     }
+
+    @Override
+    protected void initData() {
+        EventBus.getDefault().register(this);
+        if (App.isLogin()) {
+
+        }
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void findViewsById(View view) {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_mine;
+    }
+
     private void gotoNew() {
-        button.gotoNew();
+        button_stop.gotoNew();
         Intent intent = new Intent(getActivity(), ReportActivity.class);
         intent.putExtra("awaketime",awakeTime/1000);
         intent.putExtra("lightsleeptime",lightSleepTime/1000);
         intent.putExtra("deepsleeptime",deepSleepTime/1000);
-        int xc = (button.getLeft() + button.getRight()) / 2;
-        int yc = (button.getTop() + button.getBottom()) / 2;
+        int xc = (button_stop.getLeft() + button_stop.getRight()) / 2;
+        int yc = (button_stop.getTop() + button_stop.getBottom()) / 2;
         animator = ViewAnimationUtils.createCircularReveal(rlContent,xc,yc,0,1111);
         animator.setDuration(300);
         animator.addListener(new Animator.AnimatorListener() {
@@ -222,6 +266,77 @@ public class SleepFragment extends Fragment {
         rlContent.getBackground().setAlpha(255);
     }
 
+    public void onPause() {
+        super.onPause();
+        if (mAudioRecord != null) {
+            mAudioRecord.stop();
+            mAudioRecord.release();
+            mAudioRecord = null;
+        }
+    }
+
+//wave
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.RECORD_AUDIO}, RECORD_AUDIO_REQUEST_CODE);
+        } else {
+            startRecording();
+        }
+    }
+
+    private void startRecording() {
+        if (mAudioRecord != null) {
+            mAudioRecord.startRecording();
+
+            thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        if(mAudioRecord != null) {
+                            int bytesRead = mAudioRecord.read(mAudioBuffer, 0, mBufferSize);
+                            drawWaveform(bytesRead);
+                        }
+                        else break;
+                    }
+                }
+            });
+            thread.start();
+        } else {
+            // mAudioRecord 对象为 null，进行相应处理
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == RECORD_AUDIO_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startRecording();
+            }
+        }
+    }
+
+    private void drawWaveform(int bytesRead) {
+        int width = mWaveformView.getWidth();
+        int height = mWaveformView.getHeight();
+        mCanvas.drawColor(Color.WHITE);
+        for (int i = 0; i < bytesRead; i++) {
+            float y = height / 2 + mAudioBuffer[i] * height / 2 / Short.MAX_VALUE;
+            mCanvas.drawLine(i * width / bytesRead, height / 2, i * width / bytesRead, y, mPaint);
+        }
+
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mWaveformView.setImageBitmap(mBitmap);
+            }
+        });
+    }
+
+    //end
     @Override
     public void onStop() {
         super.onStop();
@@ -229,6 +344,6 @@ public class SleepFragment extends Fragment {
             animator.cancel();
         }
         rlContent.getBackground().setAlpha(0);
-        button.regainBackground();
+        button_stop.regainBackground();
     }
 }
