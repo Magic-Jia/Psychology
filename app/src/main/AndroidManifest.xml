@@ -25,6 +25,7 @@
             android:name=".ui.activity.SleepActivity"
             android:exported="true" />
         -->
+        <activity android:name=".ui.activity.FansFollowRecordActivity" />
         <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
