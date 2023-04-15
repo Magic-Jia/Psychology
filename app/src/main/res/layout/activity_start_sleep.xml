@@ -41,15 +41,15 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="183dp"
-                android:layout_height="209dp"
-                android:layout_marginStart="100dp"
+                android:layout_width="261dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="72dp"
                 android:text="贾旭明"
-                android:textColor="@color/white"
-                android:textSize="50dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="197dp">
+                tools:layout_editor_absoluteY="434dp">
 
             </TextView>
 

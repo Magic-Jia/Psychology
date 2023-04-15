@@ -5,10 +5,11 @@
     android:orientation="vertical">
 
     <!-- Your other views here -->
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
+        android:layout_height="58dp"
+        android:background="@drawable/report_background"
         android:orientation="horizontal">
 
         <ImageView
@@ -48,5 +49,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/useful_time"
+        android:textSize="16sp" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/sleep_advice_textview"
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:text="Sleep Advice: Get more exercise"
         android:textSize="16sp" />
 </LinearLayout>
