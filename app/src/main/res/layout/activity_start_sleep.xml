@@ -11,58 +11,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/ic_moon"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rl_content"
-            android:layout_width="411dp"
-            android:layout_height="622dp"
-            android:background="@color/cutePink"
+            android:layout_width="410dp"
+            android:layout_height="688dp"
+            android:background="@drawable/star"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.495">
-
-            <TextView
-                android:id="@+id/tv_sleep_status"
-                android:layout_width="117dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="212dp"
-                android:text="@string/sleep_status"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="DuplicateIds" />
-
-            <TextView
-                android:id="@+id/tv_sleep_time"
-                android:layout_width="263dp"
-                android:layout_height="139dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="72dp"
-                android:text="@string/sleep_time"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="DuplicateIds" />
-
-            <TextView
-                android:id="@+id/tv_decibel"
-                android:layout_width="164dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="292dp"
-                android:text="@string/decebel"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.xf.psychology.ui.NbButton
                 android:id="@+id/button_test"
@@ -70,33 +30,43 @@
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="532dp"
+                android:layout_marginTop="520dp"
                 android:background="@color/cutePink"
                 android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.403"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
-            <com.xf.psychology.ui.NbButton1
-                android:id="@+id/btn_start_sleep"
-                android:layout_width="221dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="76dp"
-                android:layout_marginTop="452dp"
-                android:dither="true"
-                android:shape="rectangle"
-                android:text="@string/start_button"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="183dp"
+                android:layout_height="209dp"
+                android:layout_marginStart="100dp"
+                android:text="贾旭明"
                 android:textColor="@color/white"
+                android:textSize="50dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="197dp">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/waveform_view"
+                android:layout_width="419dp"
+                android:layout_height="107dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="605dp">
+
+            </ImageView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="406dp"
             android:layout_height="52dp"
             android:background="@color/colorPrimary"
@@ -111,8 +81,8 @@
             android:layout_width="50dp"
             android:layout_height="55dp"
             app:srcCompat="@drawable/ic_back"
-            tools:layout_editor_absoluteY="1dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="1dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -124,7 +94,6 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

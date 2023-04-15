@@ -15,9 +15,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rl_content"
             android:layout_width="411dp"
             android:layout_height="622dp"
+            android:id="@+id/rl_content"
             android:background="@color/cutePink"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,34 +33,28 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="212dp"
                 android:text="@string/sleep_status"
-                android:textColor="@color/white"
-                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="DuplicateIds" />
 
             <TextView
                 android:id="@+id/tv_sleep_time"
-                android:layout_width="263dp"
-                android:layout_height="139dp"
+                android:layout_width="118dp"
+                android:layout_height="82dp"
                 android:layout_marginStart="64dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/sleep_time"
-                android:textColor="@color/white"
-                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="DuplicateIds" />
 
             <TextView
                 android:id="@+id/tv_decibel"
-                android:layout_width="164dp"
-                android:layout_height="90dp"
+                android:layout_width="116dp"
+                android:layout_height="87dp"
                 android:layout_marginStart="64dp"
-                android:layout_marginTop="292dp"
+                android:layout_marginTop="352dp"
                 android:text="@string/decebel"
-                android:textColor="@color/white"
-                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
