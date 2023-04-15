@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
             android:name=".ui.activity.StartSleepActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.activity.report"
             android:exported="false" />

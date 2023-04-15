@@ -1,6 +1,7 @@
 package com.xf.psychology.ui.fragment;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewAnimationUtils;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -18,19 +20,42 @@ import com.xf.psychology.ui.NbButton;
 import com.xf.psychology.ui.NbButton1;
 import com.xf.psychology.ui.activity.MainActivity;
 import com.xf.psychology.ui.activity.ReportActivity;
-import com.xf.psychology.ui.activity.StartSleepActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.MediaRecorder;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
 public class SleepFragment extends Fragment {
     private NbButton button;
     private NbButton1 Button_Start;
@@ -51,10 +76,11 @@ public class SleepFragment extends Fragment {
     private Handler handler1;
     private Runnable sampleRunnable;
 
+    private Button buttonStart;
+    private Button buttonStop;
     private TextView textView;
     private TextView textView2;
     private TextView textView3;
-
     public static SleepFragment newInstance() {
         Bundle args = new Bundle();
         SleepFragment fragment = new SleepFragment();
@@ -81,63 +107,89 @@ public class SleepFragment extends Fragment {
         Button_Start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoNew();
                 // Do something
-//                recorder = new MediaRecorder();
-//                recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-//                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-//                File dir = getContext().getExternalFilesDir(null);
-//
-//                fileName = dir.getAbsolutePath() + "/" + System.currentTimeMillis() + ".3gp";
-//                recorder.setOutputFile(fileName);
-//                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-//                try {
-//                    recorder.prepare();
-//                } catch (IOException e) {
-//                    Log.e("MainActivity", "prepare() failed");
-//                }
-//                recorder.start();
-//                isRecording = true;
-//
-//                handler1 = new Handler(Looper.getMainLooper());
-//                sampleRunnable = new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (isRecording) {
-//                            int amplitude = recorder.getMaxAmplitude();
-//                            if (amplitude < LOUDNESS_THRESHOLD) {
-//                                if (amplitude < 3000) {
-//                                    lightSleepTime += SAMPLE_DELAY_MS;
-//                                    textView2.setText("浅睡眠");
-//                                } else {
-//                                    deepSleepTime += SAMPLE_DELAY_MS;
-//                                    textView2.setText("深睡眠");
-//                                }
-//                            } else {
-//                                awakeTime += SAMPLE_DELAY_MS;
-//                                textView2.setText("清醒");
-//                            }
-//                            textView.setText("清醒时间：" + awakeTime / 1000 + "秒\n浅睡眠时间：" + lightSleepTime / 1000 + "秒\n深睡眠时间：" + deepSleepTime / 1000 + "秒");
-//                            double voice = (20*Math.log10(amplitude));
-//                            String result = String .format("%.0f",voice);
-//                            textView3.setText("当前分贝值：" + result);
-//
-//                            handler1.postDelayed(this, SAMPLE_DELAY_MS);
-//                        }
-//                    }
-//                };
-//                handler1.postDelayed(sampleRunnable, SAMPLE_DELAY_MS);
+                recorder = new MediaRecorder();
+                recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+                recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                File dir = getContext().getExternalFilesDir(null);
+
+                fileName = dir.getAbsolutePath() + "/" + System.currentTimeMillis() + ".3gp";
+                recorder.setOutputFile(fileName);
+                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                try {
+                    recorder.prepare();
+                } catch (IOException e) {
+                    Log.e("MainActivity", "prepare() failed");
+                }
+                recorder.start();
+                isRecording = true;
+
+                handler1 = new Handler(Looper.getMainLooper());
+                sampleRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isRecording) {
+                            int amplitude = recorder.getMaxAmplitude();
+                            if (amplitude < LOUDNESS_THRESHOLD) {
+                                if (amplitude < 3000) {
+                                    lightSleepTime += SAMPLE_DELAY_MS;
+                                    textView2.setText("浅睡眠");
+                                } else {
+                                    deepSleepTime += SAMPLE_DELAY_MS;
+                                    textView2.setText("深睡眠");
+                                }
+                            } else {
+                                awakeTime += SAMPLE_DELAY_MS;
+                                textView2.setText("清醒");
+                            }
+                            textView.setText("清醒时间：" + awakeTime / 1000 + "秒\n浅睡眠时间：" + lightSleepTime / 1000 + "秒\n深睡眠时间：" + deepSleepTime / 1000 + "秒");
+                            double voice = (20*Math.log10(amplitude));
+                            String result = String .format("%.0f",voice);
+                            textView3.setText("当前分贝值：" + result);
+                            handler1.postDelayed(this, SAMPLE_DELAY_MS);
+                        }
+                    }
+                };
+                handler1.postDelayed(sampleRunnable, SAMPLE_DELAY_MS);
             }
 
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isRecording == false) return;
+                isRecording = false;
+                recorder.stop();
+                recorder.release();
+                recorder = null;
+                handler1.removeCallbacks(sampleRunnable);
+                textView.setText("清醒时间：" + awakeTime / 1000 + "秒\n浅睡眠时间：" + lightSleepTime / 1000 + "秒\n深睡眠时间：" + deepSleepTime / 1000 + "秒");
+                // To start a new activity, we need to create an Intent object
+                // The first parameter is the current context (in this case, MainActivity.this)
+                // The second parameter is the class of the activity we want to start (in this case, Report.class)
+                // We then call startActivity() with the intent as the parameter to start the new activity
+                button.startAnim();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //跳转
+                        gotoNew();
+                    }
+                },3000);
+                awakeTime=0;
+                lightSleepTime=0;
+                deepSleepTime=0;
+            }
         });
         return root;
     }
     private void gotoNew() {
         button.gotoNew();
-        Intent intent = new Intent(getActivity(),StartSleepActivity.class);
-//        intent.putExtra("awaketime",awakeTime/1000);
-//        intent.putExtra("lightsleeptime",lightSleepTime/1000);
-//        intent.putExtra("deepsleeptime",deepSleepTime/1000);
+        Intent intent = new Intent(getActivity(), ReportActivity.class);
+        intent.putExtra("awaketime",awakeTime/1000);
+        intent.putExtra("lightsleeptime",lightSleepTime/1000);
+        intent.putExtra("deepsleeptime",deepSleepTime/1000);
         int xc = (button.getLeft() + button.getRight()) / 2;
         int yc = (button.getTop() + button.getBottom()) / 2;
         animator = ViewAnimationUtils.createCircularReveal(rlContent,xc,yc,0,1111);
