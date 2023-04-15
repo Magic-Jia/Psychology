@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".ReportActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.SleepActivity"
-            android:exported="true" />
+        <activity android:name=".ui.activity.FansFollowRecordActivity" />
+        <activity android:name=".ui.activity.ReportActivity" />
         <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />

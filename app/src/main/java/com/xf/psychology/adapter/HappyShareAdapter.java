@@ -107,7 +107,7 @@ public class HappyShareAdapter extends RecyclerView.Adapter<HappyShareViewHolder
                     followBean.aIconPath = doShare.authorIcon;
                     followBean.bId = App.user.id;
                     followBean.bNickName = App.user.name;
-                    followBean.bIconPath = App.user.name;
+                    followBean.bIconPath = App.user.iconPath;
                     DBCreator.getFollowDao().insert(followBean);
                     holder.followTv.setText("已关注");
                 }

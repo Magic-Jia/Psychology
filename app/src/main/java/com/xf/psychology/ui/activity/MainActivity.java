@@ -94,8 +94,6 @@ public class MainActivity extends BaseActivity {
     protected void findViewsById() {
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
-
-
     }
 
     private class MyViewPagerAdapter extends FragmentPagerAdapter {

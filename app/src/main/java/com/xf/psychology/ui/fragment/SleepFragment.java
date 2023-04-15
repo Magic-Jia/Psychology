@@ -105,7 +105,9 @@ public class SleepFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        animator.cancel();
+        if (animator != null) {
+            animator.cancel();
+        }
         rlContent.getBackground().setAlpha(0);
         button.regainBackground();
     }

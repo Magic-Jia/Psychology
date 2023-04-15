@@ -105,7 +105,7 @@ public class HomeFragment extends BaseFragment {
                         followBean.aIconPath = questionShowBean.raiserIcon;
                         followBean.bId = App.user.id;
                         followBean.bNickName = App.user.name;
-                        followBean.bIconPath = App.user.name;
+                        followBean.bIconPath = App.user.iconPath;
                         DBCreator.getFollowDao().insert(followBean);
                         holder.setText(R.id.followTv, "已关注");
                     }
