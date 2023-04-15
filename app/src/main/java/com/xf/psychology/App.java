@@ -59,6 +59,7 @@ public class App extends Application {
             /*----------------------------问答----------------------------------------*/
             insertQuestion1();
             insertQuestion2();
+            insertQuestion3();
             /*----------------------------好书----------------------------------------*/
             insertBook1();
             insertBook2();
@@ -155,7 +156,7 @@ public class App extends Application {
         bookBean.whyWant = "体现实践应用的前景,中外相关心理咨询经典案例";
         bookBean.facePicPath = "https://www.wanwupai.com/upload/product/20190916-1/15f83cdd295ca0a9fd511ebc9e1f649a.jpg";
         bookBean.upId = 2;
-        bookBean.upName = "贾旭明";
+        bookBean.upName = "杜瑞翔";
         DBCreator.getBookDao().insert(bookBean);
     }
 
@@ -181,7 +182,7 @@ public class App extends Application {
         QuestionBean questionBean = new QuestionBean();
         questionBean.question = "24岁，读研，为什么会变得非常排斥与家人联系？";
         questionBean.raiserIcon = JXMIcon;
-        questionBean.raiserNickName = "贾旭明";
+        questionBean.raiserNickName = "闫浩楠";
         questionBean.raiserId = 2;
         questionBean.time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         DBCreator.getQuestionDao().insert(questionBean);
@@ -189,7 +190,32 @@ public class App extends Application {
         answerBean.answer = "题主你好：     在你的描述当中，我感觉到了内心强烈的冲突矛盾。一方面你对家人的关心很抵触，感觉很累，但一方面你不能接受这种抵触，好像你内心有一个严格的判官在批判自己出现这种感受。不知道，除了对家里人的感受，你对待其他的事情上出现一些负面的感受时，这个判官会不会也在你心里拿着一个严格的戒尺在敲打你？      从你的文字当中感觉家里人对你的关心有一些无微不至，或者是包办安排，好像在一些你不需要的地方，他们也要想方设法的为你做一些事情。就像一个满心关怀的妈妈，要给一个已经吃饱的孩子再使劲的喂进去食物，而孩子是不能拒绝这个食物的，即使他已经感觉有些反胃了，因为拒绝会让妈妈伤心，会让自己有罪恶感。一个孩子取悦父母的方式就是去接受，同时也是因为他确实很幼小，他需要去接受，但是随着我们的成长，我内心真正想要的和父母想想给的开始不一致，我们也开始逐渐希望自己去获得一些东西，而妈妈仍然因为拒绝而难过，不能够理解我们的拒绝，这也许会让我们内心很慌乱、自责。      在无法拒绝的基础上，似乎他们给你的东西你还要去装样子接受，不知道你是否有空间去做自己？同时你还提到现在还没有毕业，而家人就已经开始忙碌的提前帮你安排工作了，我似乎看到了总是害怕自己的小孩“吃不饱”的父母，关怀中又带着一些焦虑。而最压抑的地方是你无法表达，不知道如果你表示了“不需要”，是否会担心对父母家人造成了攻击？当人们的情绪累积到一定程度的时候却无法表达，身体就会帮助我们去表达，你用了躯体化这个词，相信你也是了解一些的。     其实感受是不分对错的，感受不会因为想抑制他，他就完全的消失，也不意味出现感受我们就一定会去做什么冲动的坏情。他们的爱意是真切的，但你的“不需要”也是真切的，需要和给予不相一致，本来就是难以用是和非来评价的。正因为你是一个独立的个体，所以你才会出现跟家人不同的感受，即使你现在无法去拒绝家人的关心，但是请别再鞭打自己的感受。       爱不一定仅仅是一种形式的，无论是他们对你的爱，还是你对他们的爱。";
         answerBean.answererIconPath = CNIcon;
         answerBean.answererId = 1;
-        answerBean.answererNickName = "程楠";
+        answerBean.answererNickName = "杜瑞翔";
+        answerBean.questionId = 2;
+        answerBean.time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        DBCreator.getAnswerDao().insert(answerBean);
+    }
+    private void insertQuestion3() {
+        QuestionBean questionBean = new QuestionBean();
+        questionBean.question = "什么是心理健康，以及如何维护它？";
+        questionBean.raiserIcon = JXMIcon;
+        questionBean.raiserNickName = "杜瑞翔";
+        questionBean.raiserId = 2;
+        questionBean.time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        DBCreator.getQuestionDao().insert(questionBean);
+        AnswerBean answerBean = new AnswerBean();
+        answerBean.answer = "心理健康是一个人心理和情感状态的积极指标，表现为情感的平衡、适应性强、自我意识高、自我肯定、对生活有积极的态度和对社会有益的互动方式等。维护心理健康是一个综合性问题，包括以下方面：\n" +
+                "\n" +
+                "积极的生活方式：包括充足的睡眠、健康的饮食、持续的运动和减少不良习惯（如吸烟、酗酒等）。\n" +
+                "\n" +
+                "学会应对压力：人们无法避免面对各种压力，但可以学会应对它们。方法包括深呼吸、缓慢计数、肌肉放松、心理干预等。\n" +
+                "\n" +
+                "建立支持体系：与家人、朋友和同事建立亲密关系，寻求安慰、支持和帮助，可以降低心理压力和防止心理疾病的发生。\n" +
+                "\n" +
+                "寻求专业帮助：如果情况严重，影响日常生活，建议寻求专业心理医生的帮助，获得恰当的药物治疗或心理治疗。";
+        answerBean.answererIconPath = CNIcon;
+        answerBean.answererId = 1;
+        answerBean.answererNickName = "杜瑞翔";
         answerBean.questionId = 2;
         answerBean.time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         DBCreator.getAnswerDao().insert(answerBean);

@@ -111,8 +111,9 @@
         }
         public void gotoNew(){
             isMorphing=false;
-
-            arcValueAnimator.cancel();
+            if (arcValueAnimator != null) {
+                arcValueAnimator.cancel();
+            }
             setVisibility(GONE);
 
         }
