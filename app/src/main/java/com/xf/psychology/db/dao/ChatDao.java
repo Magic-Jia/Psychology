@@ -13,6 +13,6 @@ public interface ChatDao {
     @Insert
     public void insert(ChatBean chatBean);
 
-    @Query("select * from chatbean where sendId=:sendId")
-    List<ChatBean> queryBySendId(int sendId);
+    @Query("select * from chatbean where sendId=:sendId or catchId=:catchId")
+    List<ChatBean> queryBySendId(int sendId,int catchId);
 }

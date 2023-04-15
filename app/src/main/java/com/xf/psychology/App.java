@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.xf.psychology.bean.AnswerBean;
 import com.xf.psychology.bean.BookBean;
+import com.xf.psychology.bean.ChatBean;
 import com.xf.psychology.bean.FMBean;
 import com.xf.psychology.bean.QuestionBean;
 import com.xf.psychology.bean.ShareBeanXF;
@@ -46,11 +47,22 @@ public class App extends Application {
             registerUser.iconPath = CNIcon;
             DBCreator.getUserDao().registerUser(registerUser);
             UserBean JXM = new UserBean();
+            JXM.id=2;
             JXM.name = "贾旭明";
-            JXM.phone = "15792405696";
-            JXM.pwd = "123456";
+            JXM.phone = "15122995997";
+            JXM.pwd = "205854";
             JXM.iconPath = JXMIcon;
             DBCreator.getUserDao().registerUser(JXM);
+
+            ChatBean chatbean = new ChatBean();
+            chatbean.sendId = 2;
+            chatbean.sendIconPath = DBCreator.getUserDao().queryUserByPhone("15792405696").iconPath;
+            chatbean.message = "你好我是你的心理医生贾旭明~~~";
+            chatbean.catchId = 1;
+            chatbean.catchIconPath = DBCreator.getUserDao().queryUserByPhone("15210669565").iconPath;
+            chatbean.messageId = 1;
+            chatbean.messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            DBCreator.getChatDao().insert(chatbean);
 
             /*----------------------------动态----------------------------------------*/
             insertShare1();

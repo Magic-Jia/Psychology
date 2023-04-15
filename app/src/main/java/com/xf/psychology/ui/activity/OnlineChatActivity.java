@@ -31,6 +31,7 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +48,13 @@ public class OnlineChatActivity extends BaseActivity {
         public void bind(ViewHolder holder, ChatBean chatBean, int position) {  // 将数据绑定到列表项
             holder.setText(R.id.messageTv, chatBean.message);  // 设置消息文本
             holder.setText(R.id.timeTv, chatBean.messageTime);  // 设置消息时间
+            if(chatBean.sendId==App.user.id){
+                holder.setLinearLayoutRight(R.id.linearlayout);
+                holder.setIconRight(R.id.constraint);
+            }else {
+                holder.setLinearLayoutLeft(R.id.linearlayout);
+                holder.setIconLeft(R.id.constraint);
+            }
             ImageView view = holder.getView(R.id.userIcon);  // 获取头像视图
             GlideUtil.load(view, chatBean.sendIconPath);  // 使用 Glide 加载头像图片
         }
@@ -84,8 +92,15 @@ public class OnlineChatActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        List<ChatBean> queryData = DBCreator.getChatDao().queryBySendId(App.user.id);
-        chatBeans.addAll(queryData);
+        List<ChatBean> SendData = DBCreator.getChatDao().queryBySendId(App.user.id, 2);
+
+        Collections.sort(SendData, new Comparator<ChatBean>() {
+            @Override
+            public int compare(ChatBean o1, ChatBean o2) {
+                return o1.messageTime.compareTo(o2.messageTime);
+            }
+        });
+        chatBeans.addAll(SendData);
         chatRecycler.setAdapter(adapter);
         chatRecycler.scrollToPosition(chatBeans.size() - 1);
     }
