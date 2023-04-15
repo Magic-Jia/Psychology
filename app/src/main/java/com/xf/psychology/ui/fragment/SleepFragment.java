@@ -197,9 +197,7 @@ public class SleepFragment extends BaseFragment {
                         gotoNew();
                     }
                 },3000);
-                awakeTime=0;
-                lightSleepTime=0;
-                deepSleepTime=0;
+
             }
         });
         return root;
@@ -234,6 +232,10 @@ public class SleepFragment extends BaseFragment {
         intent.putExtra("awaketime",awakeTime/1000);
         intent.putExtra("lightsleeptime",lightSleepTime/1000);
         intent.putExtra("deepsleeptime",deepSleepTime/1000);
+        startActivity(intent);
+        awakeTime=0;
+        lightSleepTime=0;
+        deepSleepTime=0;
         int xc = (button_stop.getLeft() + button_stop.getRight()) / 2;
         int yc = (button_stop.getTop() + button_stop.getBottom()) / 2;
         animator = ViewAnimationUtils.createCircularReveal(rlContent,xc,yc,0,1111);
@@ -244,7 +246,7 @@ public class SleepFragment extends BaseFragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(intent);
+
                         getActivity().overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
                     }
                 },200);

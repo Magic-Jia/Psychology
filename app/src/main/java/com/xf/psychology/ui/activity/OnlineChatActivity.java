@@ -35,48 +35,52 @@ import java.util.Date;
 import java.util.List;
 
 public class OnlineChatActivity extends BaseActivity {
-    private EditText edit;
-    private TextView sendBtn;
-    private View bottomView;
-    private RecyclerView chatRecycler;
-    private List<ChatBean> chatBeans = new ArrayList<>();
+    // 声明变量
+    private EditText edit;           // 输入框
+    private TextView sendBtn;        // 发送按钮
+    private View bottomView;         // 底部视图
+    private RecyclerView chatRecycler;  // 聊天消息列表
+    private List<ChatBean> chatBeans = new ArrayList<>();  // 聊天消息列表数据源
     private CommonAdapter<ChatBean> adapter = new CommonAdapter<ChatBean>(R.layout.item_chat, chatBeans) {
+        // 适配器，用于将数据绑定到聊天消息列表中
         @Override
-        public void bind(ViewHolder holder, ChatBean chatBean, int position) {
-            holder.setText(R.id.messageTv, chatBean.message);
-            holder.setText(R.id.timeTv, chatBean.messageTime);
-            ImageView view = holder.getView(R.id.userIcon);
-            GlideUtil.load(view, chatBean.sendIconPath);
+        public void bind(ViewHolder holder, ChatBean chatBean, int position) {  // 将数据绑定到列表项
+            holder.setText(R.id.messageTv, chatBean.message);  // 设置消息文本
+            holder.setText(R.id.timeTv, chatBean.messageTime);  // 设置消息时间
+            ImageView view = holder.getView(R.id.userIcon);  // 获取头像视图
+            GlideUtil.load(view, chatBean.sendIconPath);  // 使用 Glide 加载头像图片
         }
     };
-    private boolean isEx = true;
+    private boolean isEx = true;  // 声明一个 boolean 类型的变量，但似乎没有使用
 
+    // 初始化事件监听器
     @Override
     protected void initListener() {
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        sendBtn.setOnClickListener(new View.OnClickListener() {  // 点击发送按钮时触发
             @Override
             public void onClick(View v) {
-                String message = edit.getText().toString().trim();
-                if (message.isEmpty()) {
+                String message = edit.getText().toString().trim();  // 获取输入框中的文本
+                if (message.isEmpty()) {  // 如果文本为空则直接返回
                     return;
                 }
-                ChatBean chatBean = new ChatBean();
-                chatBean.message = message;
-                chatBean.sendId = App.user.id;
-                chatBean.messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                chatBean.sendIconPath = App.user.iconPath;
-                DBCreator.getChatDao().insert(chatBean);
-                chatBeans.add(chatBean);
-                adapter.notifyItemInserted(chatBeans.size() - 1);
-                edit.setText("");
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(bottomView.getWindowToken(), 0);
-                chatRecycler.smoothScrollToPosition(chatBeans.size() - 1);
+                ChatBean chatBean = new ChatBean();  // 新建一个聊天消息对象
+                chatBean.message = message;  // 设置聊天消息的内容
+                chatBean.sendId = App.user.id;  // 设置发送者的 ID
+                chatBean.messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());  // 设置聊天消息的发送时间
+                chatBean.sendIconPath = App.user.iconPath;  // 设置发送者的头像路径
+                DBCreator.getChatDao().insert(chatBean);  // 将聊天消息插入到数据库中
+                chatBeans.add(chatBean);  // 将聊天消息添加到数据源中
+                adapter.notifyItemInserted(chatBeans.size() - 1);  // 刷新列表项
+                edit.setText("");  // 清空输入框
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);  // 获取输入法管理器
+                imm.hideSoftInputFromWindow(bottomView.getWindowToken(), 0);  // 隐藏输入法
+                chatRecycler.smoothScrollToPosition(chatBeans.size() - 1);  // 滚动到最新的聊天消息
 //                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) bottomView.getLayoutParams();
 //                layoutParams.bottomMargin = 0;
             }
         });
     }
+
 
     @Override
     protected void initData() {
