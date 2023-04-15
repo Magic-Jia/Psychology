@@ -47,7 +47,7 @@ public class App extends Application {
             DBCreator.getUserDao().registerUser(registerUser);
             UserBean JXM = new UserBean();
             JXM.name = "贾旭明";
-            JXM.phone = "18906223695";
+            JXM.phone = "15792405696";
             JXM.pwd = "123456";
             JXM.iconPath = JXMIcon;
             DBCreator.getUserDao().registerUser(JXM);

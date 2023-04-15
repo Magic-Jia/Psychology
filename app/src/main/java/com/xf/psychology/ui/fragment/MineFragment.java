@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.xf.psychology.R;
 import com.xf.psychology.base.BaseFragment;
 import com.xf.psychology.db.DBCreator;
 import com.xf.psychology.event.LoginEvent;
+import com.xf.psychology.ui.activity.FansFollowRecordActivity;
 import com.xf.psychology.ui.activity.MyBookActivity;
 import com.xf.psychology.ui.activity.LoginActivity;
 import com.xf.psychology.ui.activity.MyFmActivity;
@@ -41,7 +43,8 @@ public class MineFragment extends BaseFragment {
     private LinearLayout feelingRecordLL;
     private LinearLayout bookLL;
     private LinearLayout fmLL;
-    private TextView fans;
+    private Button fans;
+    private Button follow;
 
 
     public static MineFragment newInstance() {
@@ -58,7 +61,8 @@ public class MineFragment extends BaseFragment {
             nameTv.setText(App.user.name);
             phoneTv.setText(App.user.phone);
             Glide.with(this).load(App.user.iconPath).into(headView);
-            fans.setText("粉丝：" + DBCreator.getFollowDao().queryFollowByAId(App.user.id).size() + "");
+            fans.setText(DBCreator.getFollowDao().queryFollowByAId(App.user.id).size() + "\n"+"粉丝");
+            follow.setText(DBCreator.getFollowDao().queryFollowByBId(App.user.id).size() + "\n"+"关注");
         }
     }
 
@@ -118,6 +122,18 @@ public class MineFragment extends BaseFragment {
                 }).setCancelable(false).show();
             }
         });
+        fans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(), FansFollowRecordActivity.class));
+            }
+        });
+        follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(), FansFollowRecordActivity.class));
+            }
+        });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -135,6 +151,7 @@ public class MineFragment extends BaseFragment {
         headView = view.findViewById(R.id.headView);
         fmLL = view.findViewById(R.id.fmRecordLL);
         fans = view.findViewById(R.id.fans);
+        follow = view.findViewById(R.id.follow);
 
         logout = view.findViewById(R.id.logout);
     }

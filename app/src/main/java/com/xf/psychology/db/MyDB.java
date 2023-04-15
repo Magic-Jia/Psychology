@@ -55,6 +55,7 @@ public abstract class MyDB extends RoomDatabase {
     public abstract ShareCommentDao getShareCommentDao();
 
     public abstract FollowDao getFollowDao();
+
     public abstract QuestionDao getQuestionDao();
     public abstract AnswerDao getAnswerDao();
 

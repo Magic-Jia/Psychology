@@ -69,22 +69,35 @@
             app:layout_constraintStart_toEndOf="@id/headView"
             app:layout_constraintTop_toBottomOf="@id/nameTv" />
 
-        <TextView
+        <Button
             android:id="@+id/fans"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="20dp"
-            android:text="粉丝数：1000"
+            android:layout_marginStart="4dp"
+            android:background="#00000000"
+            android:text="粉丝"
             android:textColor="@color/white"
-            android:textSize="12dp"
+            android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headView" />
+            app:layout_constraintTop_toBottomOf="@id/headView" />
+
+        <Button
+            android:id="@+id/follow"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:background="#00000000"
+            android:text="关注"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/fans"
+            app:layout_constraintTop_toBottomOf="@id/headView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

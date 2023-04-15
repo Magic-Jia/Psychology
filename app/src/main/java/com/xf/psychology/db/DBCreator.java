@@ -49,9 +49,7 @@ public class DBCreator {
     public static ShareCommentDao getShareCommentDao() {
         return db.getShareCommentDao();
     }
-    public static FollowDao getFollowDao() {
-        return db.getFollowDao();
-    }
+    public static FollowDao getFollowDao() { return db.getFollowDao(); }
     public static QuestionDao getQuestionDao() {
         return db.getQuestionDao();
     }
