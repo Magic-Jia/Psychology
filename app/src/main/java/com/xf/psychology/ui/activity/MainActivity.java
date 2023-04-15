@@ -1,11 +1,15 @@
 package com.xf.psychology.ui.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -20,6 +24,7 @@ import com.xf.psychology.ui.fragment.HomeFragment;
 import com.xf.psychology.ui.fragment.MineFragment;
 import com.xf.psychology.ui.fragment.SleepFragment;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,12 +58,17 @@ public class MainActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                if(position == 3){
+                    fragments.get(3).onResume();
+                }
             }
 
             @Override
             public void onPageSelected(int position) {
                 tabLayout.setCurrentTab(position);
+                if(position == 3){
+                    fragments.get(3).onResume();
+                }
             }
 
             @Override
@@ -71,6 +81,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onTabSelect(int position) {
                 viewPager.setCurrentItem(position);
+                if(position == 3){
+                    fragments.get(3).onResume();
+                }
             }
 
             @Override
