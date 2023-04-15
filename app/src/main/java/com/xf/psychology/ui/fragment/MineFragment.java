@@ -160,4 +160,16 @@ public class MineFragment extends BaseFragment {
     protected int getLayoutId() {
         return R.layout.fragment_mine;
     }
+
+    public void UpdateData(){
+        fans.setText(DBCreator.getFollowDao().queryFollowByAId(App.user.id).size() + "\n"+"粉丝");
+        follow.setText(DBCreator.getFollowDao().queryFollowByBId(App.user.id).size() + "\n"+"关注");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UpdateData();
+        // 更新数据和视图
+    }
 }
