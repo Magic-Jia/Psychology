@@ -25,6 +25,7 @@
             android:name=".ui.activity.SleepActivity"
             android:exported="true" />
         -->
+        <activity android:name=".ui.activity.FansFollowRecordActivity" />
         <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
@@ -42,7 +43,7 @@
         <activity android:name=".ui.activity.RaiseQuestionActivity" />
         <activity
             android:name=".ui.activity.WelcomeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +59,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.dododo.psychology.FileProvider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />

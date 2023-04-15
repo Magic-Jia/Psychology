@@ -1,7 +1,5 @@
 package com.xf.psychology.ui.activity;
 
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,43 +10,32 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jaeger.library.StatusBarUtil;
-import com.xf.psychology.App;
 import com.xf.psychology.R;
 import com.xf.psychology.base.BaseActivity;
-import com.xf.psychology.ui.fragment.ArticleFragment;
-import com.xf.psychology.ui.fragment.HomeFragment;
-import com.xf.psychology.ui.fragment.MineFragment;
-import com.xf.psychology.ui.fragment.SleepFragment;
+import com.xf.psychology.ui.fragment.FansFragment;
+import com.xf.psychology.ui.fragment.FollowFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+public class FansFollowRecordActivity extends BaseActivity {
+
     private ViewPager viewPager;
+
     private CommonTabLayout tabLayout;
+
     private List<Fragment> fragments = new ArrayList<>();
 
-    @Override
-    protected void initListener() {
-        if (!App.isLogin()) {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-            return;
-        }
+    protected void initListener(){
         StatusBarUtil.setTranslucent(this);
         StatusBarUtil.setColorNoTranslucent(this, getResources().getColor(R.color.colorPrimary));
         ArrayList<CustomTabEntity> tabs = new ArrayList<>();
 
-
-        tabs.add(new Tab("首页", R.drawable.icon_home, R.drawable.icon_home_un));
-        tabs.add(new Tab("文章", R.drawable.ic_wz, R.drawable.ic_wz_un));
-        tabs.add(new Tab("睡眠", R.drawable.ic_sleep, R.drawable.ic_sleep_un));
-        tabs.add(new Tab("我的", R.drawable.icon_mine, R.drawable.icon_mine_un));
-        fragments.add(HomeFragment.newInstance());
-        fragments.add(ArticleFragment.newInstance());
-        fragments.add(SleepFragment.newInstance());
-        fragments.add(MineFragment.newInstance());
-        viewPager.setOffscreenPageLimit(4);
+        tabs.add(new Tab("关注", R.drawable.icon_home, R.drawable.icon_home_un));
+        tabs.add(new Tab("粉丝", R.drawable.ic_wz, R.drawable.ic_wz_un));
+        fragments.add(FollowFragment.newInstance());
+        fragments.add(FansFragment.newInstance());
+        viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(new MyViewPagerAdapter(fragments, getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -80,18 +67,15 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void initData() {
+    protected void initData(){
 
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
+    protected int getLayoutId(){
+        return R.layout.activity_fans_follow_record;
     }
 
-    @Override
-    protected void findViewsById() {
+    protected void findViewsById(){
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
     }
@@ -143,4 +127,5 @@ public class MainActivity extends BaseActivity {
             return unSelect;
         }
     }
+
 }

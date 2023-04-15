@@ -25,6 +25,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.xf.psychology'
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -60,7 +63,5 @@ dependencies {
     implementation  "de.hdodenhof:circleimageview:2.1.0"
     implementation 'jp.wasabeef:blurry:2.1.1'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
-
-
 
 }
