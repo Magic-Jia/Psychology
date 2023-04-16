@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +27,8 @@ public class TestActivity extends BaseActivity {
     private View submit;
     private List<TestBean> data = new ArrayList<>();
     private TestAdapter adapter = new TestAdapter(data);
-
+    private Boolean Complete = true;
+    private int Number = 0;
     @Override
     protected void initListener() {
 //        评价参考：
@@ -44,22 +46,27 @@ public class TestActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Number = 0;
                 int totalScore = 0;
                 for (int i = 0; i < data.size(); i++) {
                     TestBean questionBean = data.get(i);
                     if (questionBean.score == -1) {
-                        toast("第" + (i + 1) + "题未做，请完成");
+                        Complete = false;
+                        Number++;
                     } else {
                         totalScore += questionBean.score;
                     }
                 }
                 showMsgDialog(totalScore);
-
             }
         });
     }
 
     private void showMsgDialog(int totalScore) {
+        if(!Complete) {
+            Toast.makeText(this,"您还有"+ (Number) + "道题没完成，请继续完成",Toast.LENGTH_SHORT).show();
+            return;
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_msg, null, false);
         builder.setView(inflate);
