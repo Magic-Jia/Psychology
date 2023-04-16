@@ -3,16 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/report_background">
+    android:background="@drawable/report_back2">
 
     <!-- Your other views here -->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:background="#00000000"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="睡眠报告"
+            android:textColor="#000"
 
+            android:textSize="20dp" />
         <ImageView
             android:id="@+id/backBtn"
             android:layout_width="50dp"
@@ -26,7 +34,7 @@
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="返回"
+            android:text=""
             android:textColor="#fff"
             android:textSize="20dp" />
 
@@ -37,20 +45,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/deep_ratio"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/onbed_sleep_ratio_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bedtime"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/indeed_sleep_ratio_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/useful_time"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pie_chart"
@@ -60,7 +68,7 @@
     <TextView
         android:id="@+id/sleep_advice_textview"
         android:layout_width="match_parent"
-        android:layout_height="116dp"
+        android:layout_height="294dp"
         android:text="Sleep Advice: Get more exercise"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 </LinearLayout>

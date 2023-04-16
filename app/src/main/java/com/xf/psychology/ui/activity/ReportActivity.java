@@ -66,9 +66,14 @@ public class ReportActivity extends AppCompatActivity {
         float awakeSleepPercentage = (float)(awakeTime * 1.0) / (awakeTime + lightSleepTime + deepSleepTime);
         onbedsleeptime = awakeTime + lightSleepTime + deepSleepTime;
         indeedsleeptime = lightSleepTime + deepSleepTime;
-        textView1.setText("深度睡眠所占比率：" + String.format("%.2f", deepSleepPercentage) + '\n' + "浅度睡眠所占比率" + String.format("%.2f", lightSleepPercentage) + '\n' + "清醒所占比率" + String.format("%.2f", awakeSleepPercentage) + '\n');
-        textView2.setText("在床时长" + String.format("%.2f", onbedsleeptime * 1.0/1000));
-        textView3.setText("有效睡眠时长" + String.format("%.2f", indeedsleeptime * 1.0/1000));
+        textView1.setText("深度睡眠所占比率：" + String.format("%.2f", deepSleepPercentage*100)+"%" + '\n' + "浅度睡眠所占比率" + String.format("%.2f", lightSleepPercentage*100)+"%" + '\n' + "清醒所占比率" + String.format("%.2f", awakeSleepPercentage*100)+"%" + '\n');
+        double onBedTime = onbedsleeptime * 1.0 / 3600000;
+        double effectiveSleepTime = indeedsleeptime * 1.0 / 3600000;
+        textView2.setText("在床时长：" + String.format("%.1f", onBedTime) + "小时");
+        textView3.setText("有效睡眠时长：" + String.format("%.1f", effectiveSleepTime) + "小时");
+
+        //textView2.setText("在床时长" + String.format("%.2f", onbedsleeptime * 1.0/1000));
+        //textView3.setText("有效睡眠时长" + String.format("%.2f", indeedsleeptime * 1.0/1000));
         //给出建议，展示在textview4 awake/1000单位是s
         String advice;
         if (indeedsleeptime/(1000*60)< 360) { // 有效睡眠时长不足 6 小时
@@ -89,10 +94,10 @@ public class ReportActivity extends AppCompatActivity {
         PieChart pieChart = findViewById(R.id.pie_chart);
         // 设置数据
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(deepSleepTime/60000, "深度睡眠时长"));
-        entries.add(new PieEntry(lightSleepTime/60000, "浅度睡眠时长"));
+        entries.add(new PieEntry(deepSleepPercentage*100, "深度睡眠"));
+        entries.add(new PieEntry(lightSleepPercentage*100, "浅度睡眠"));
         //entries.add(new PieEntry(10f, "快速眼动睡眠"));
-        entries.add(new PieEntry(awakeTime/60000, "清醒状态时长"));
+        entries.add(new PieEntry(awakeSleepPercentage*100, "清醒"));
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData pieData = new PieData(dataSet);
