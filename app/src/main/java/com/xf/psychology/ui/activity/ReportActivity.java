@@ -89,10 +89,10 @@ public class ReportActivity extends AppCompatActivity {
         PieChart pieChart = findViewById(R.id.pie_chart);
         // 设置数据
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(100, "深度睡眠时长"));
-        entries.add(new PieEntry(20, "浅度睡眠时长"));
+        entries.add(new PieEntry(deepSleepTime/60000, "深度睡眠时长"));
+        entries.add(new PieEntry(lightSleepTime/60000, "浅度睡眠时长"));
         //entries.add(new PieEntry(10f, "快速眼动睡眠"));
-        entries.add(new PieEntry(30, "清醒状态时长"));
+        entries.add(new PieEntry(awakeTime/60000, "清醒状态时长"));
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData pieData = new PieData(dataSet);
