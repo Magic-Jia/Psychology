@@ -92,14 +92,13 @@ public class OnlineChatActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        List<ChatBean> SendData = DBCreator.getChatDao().queryBySendId(App.user.id, 2);
-
-        Collections.sort(SendData, new Comparator<ChatBean>() {
-            @Override
-            public int compare(ChatBean o1, ChatBean o2) {
-                return o1.messageTime.compareTo(o2.messageTime);
-            }
-        });
+        List<ChatBean> SendData = DBCreator.getChatDao().queryBySendId(2,App.user.id);
+//        Collections.sort(SendData, new Comparator<ChatBean>() {
+//            @Override
+//            public int compare(ChatBean o1, ChatBean o2) {
+//                return o1.messageTime.compareTo(o2.messageTime);
+//            }
+//        });
         chatBeans.addAll(SendData);
         chatRecycler.setAdapter(adapter);
         chatRecycler.scrollToPosition(chatBeans.size() - 1);

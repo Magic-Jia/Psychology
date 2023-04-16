@@ -56,14 +56,13 @@ public class App extends Application {
 
             ChatBean chatbean = new ChatBean();
             chatbean.sendId = 2;
-            chatbean.sendIconPath = DBCreator.getUserDao().queryUserByPhone("15792405696").iconPath;
+            chatbean.sendIconPath = DBCreator.getUserDao().queryUserByPhone("15122995997").iconPath;
             chatbean.message = "你好我是你的心理医生贾旭明~~~";
             chatbean.catchId = 1;
             chatbean.catchIconPath = DBCreator.getUserDao().queryUserByPhone("15210669565").iconPath;
             chatbean.messageId = 1;
             chatbean.messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
             DBCreator.getChatDao().insert(chatbean);
-
             /*----------------------------动态----------------------------------------*/
             insertShare1();
             insertShare2();
