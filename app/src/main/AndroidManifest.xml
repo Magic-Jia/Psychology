@@ -28,7 +28,9 @@
         <activity android:name=".ui.activity.FansFollowRecordActivity" />
         <activity android:name=".ui.activity.ImageActivity" />
         <activity android:name=".ui.activity.MyFmActivity" />
-        <activity android:name=".ui.activity.SearchActivity" />
+        <activity android:name=".ui.activity.SearchActivity"
+            android:exported="true"
+            />
         <activity
             android:name=".ui.activity.OnlineChatActivity"
             android:windowSoftInputMode="adjustResize" />

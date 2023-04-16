@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.os.Bundle;
@@ -98,9 +99,10 @@ public class SleepFragment extends BaseFragment {
 
         //wave
         mPaint = new Paint();
-        mPaint.setColor(Color.GREEN);
+        mPaint.setColor(Color.BLUE);
         mWaveformView = root.findViewById(R.id.waveform_view);
-
+        Drawable myImage = getResources().getDrawable(R.drawable.ic_moon1);
+        mWaveformView.setImageDrawable(myImage);
         mBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
         mAudioBuffer = new short[mBufferSize];
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -109,7 +111,7 @@ public class SleepFragment extends BaseFragment {
             mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, mBufferSize);
             mAudioRecord.startRecording();
         }
-        mBitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        mBitmap = Bitmap.createBitmap(1200, 100, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
         //end
 
@@ -192,6 +194,20 @@ public class SleepFragment extends BaseFragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        if(thread == null) {
+                            thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    while (true) {
+                                        if(mAudioRecord != null) {
+                                            int bytesRead = mAudioRecord.read(mAudioBuffer, 0, mBufferSize);
+                                            drawWaveform(bytesRead);
+                                        }
+                                        else break;
+                                    }
+                                }
+                            });
+                        }
                         thread.interrupt();
                         //跳转
                         gotoNew();

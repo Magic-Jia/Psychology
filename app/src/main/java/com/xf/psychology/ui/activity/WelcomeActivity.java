@@ -55,9 +55,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        list.add(R.drawable.wel1);
-        list.add(R.drawable.wel2);
-        list.add(R.drawable.wel3);
+        list.add(R.drawable.hebut);
+        list.add(R.drawable.lone);
+        list.add(R.drawable.show2);
         viewPager.setAdapter(adapter);
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override

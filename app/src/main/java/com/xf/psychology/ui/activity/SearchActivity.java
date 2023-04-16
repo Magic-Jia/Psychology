@@ -206,7 +206,11 @@ public class SearchActivity extends BaseActivity {
                     questionShowBean.raiserIcon = questionBean.raiserIcon;
                     questionShowBean.detail = questionBean.detail;
                     questionShowBean.time = questionBean.time;
-                    FollowBean followBeans = DBCreator.getFollowDao().queryFollowByABId(questionShowBean.raiserId, App.user.id);
+                    FollowBean followBeans = null;
+                    if (App.user != null) {
+                        followBeans = DBCreator.getFollowDao().queryFollowByABId(questionShowBean.raiserId, App.user.id);
+                    }
+//                    FollowBean followBeans = DBCreator.getFollowDao().queryFollowByABId(questionShowBean.raiserId, App.user.id);
                     questionShowBean.isFollowed = followBeans != null;
                     List<AnswerBean> answers = DBCreator.getAnswerDao().queryByQuestionId(questionShowBean.questionId);
                     questionShowBean.firstAnswer = (answers != null && !answers.isEmpty()) ? answers.get(0).answer : "此问题暂时无人回答哦，等你来回答";

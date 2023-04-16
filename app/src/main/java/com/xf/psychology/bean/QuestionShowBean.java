@@ -14,8 +14,10 @@ public class QuestionShowBean implements Serializable {
     public boolean isFollowed;
 
     public boolean contains(String key) {
-        return raiserNickName.contains(key) || question.contains(key) || detail.contains(key);
+        return key != null && (question != null && question.contains(key))
+                || (detail != null && detail.contains(key));
     }
+
     @Override
     public String toString() {
         return "QuestionShowBean{" +
