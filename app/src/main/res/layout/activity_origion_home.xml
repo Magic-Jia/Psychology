@@ -5,7 +5,7 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -56,7 +56,9 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:elevation="0dp">
+                app:elevation="0dp"
+                android:background="@color/background"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,10 +66,10 @@
                     android:orientation="vertical"
                     app:layout_scrollFlags="scroll">
 
-                    <com.daimajia.slider.library.SliderLayout
+                    <!--<com.daimajia.slider.library.SliderLayout
                         android:id="@+id/slider"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp" />
+                        android:layout_height="80dp" />-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -206,32 +208,36 @@
 
                 <com.flyco.tablayout.CommonTabLayout
                     android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
+                    android:layout_width="230dp"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:layout_gravity="center"
                     app:tl_indicator_color="@color/colorPrimary"
                     app:tl_textSelectColor="@color/colorPrimary"
                     app:tl_textUnselectColor="@android:color/darker_gray"
                     tl:tl_iconVisible="false"
-
-
                     tl:tl_indicator_corner_radius="1.5dp"
                     tl:tl_indicator_height="3dp"
                     tl:tl_indicator_width="10dp"
                     tl:tl_textsize="14sp" />
 
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
             </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <!--<androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/shareRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />-->
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -266,9 +272,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="100dp"
         android:background="@drawable/shape_round_primary"
         android:elevation="3dp"
         android:translationZ="10dp"

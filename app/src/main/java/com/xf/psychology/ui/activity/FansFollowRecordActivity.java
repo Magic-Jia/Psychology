@@ -12,8 +12,8 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jaeger.library.StatusBarUtil;
 import com.xf.psychology.R;
 import com.xf.psychology.base.BaseActivity;
-import com.xf.psychology.ui.fragment.FansFragment;
-import com.xf.psychology.ui.fragment.FollowFragment;
+import com.xf.psychology.ui.fragment.ShowFansFragment;
+import com.xf.psychology.ui.fragment.ShowFollowsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,8 @@ public class FansFollowRecordActivity extends BaseActivity {
 
         tabs.add(new Tab("关注", R.drawable.icon_home, R.drawable.icon_home_un));
         tabs.add(new Tab("粉丝", R.drawable.ic_wz, R.drawable.ic_wz_un));
-        fragments.add(FollowFragment.newInstance());
-        fragments.add(FansFragment.newInstance());
+        fragments.add(ShowFollowsFragment.newInstance());
+        fragments.add(ShowFansFragment.newInstance());
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(new MyViewPagerAdapter(fragments, getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

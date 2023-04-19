@@ -7,7 +7,7 @@
     android:background="@drawable/shape_home_item_3"
     android:elevation="1dp"
     android:orientation="vertical"
-    android:paddingBottom="10dp">
+    android:paddingBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="雪融融"
+            android:text="程楠"
             android:textColor="@color/black"
             android:textSize="12dp"
             app:layout_constraintLeft_toRightOf="@+id/userIcon"
