@@ -37,12 +37,16 @@ public class TestAdapter extends RecyclerView.Adapter<TestViewHolder> {
         holder.answerSelect.setOnCheckedChangeListener(null);
         holder.answerSelect.clearCheck();
         if (questionBean.score != -1) {
-            if (questionBean.score == 0) {
-                holder.answerSelect.check(R.id.btn3);
-            } else if (questionBean.score == 1) {
-                holder.answerSelect.check(R.id.btn2);
-            } else if (questionBean.score == 2) {
+            if (questionBean.score == 1) {
                 holder.answerSelect.check(R.id.btn1);
+            } else if (questionBean.score == 2) {
+                holder.answerSelect.check(R.id.btn2);
+            } else if (questionBean.score == 3) {
+                holder.answerSelect.check(R.id.btn3);
+            } else if (questionBean.score == 4) {
+                holder.answerSelect.check(R.id.btn4);
+            } else if (questionBean.score == 5) {
+                holder.answerSelect.check(R.id.btn5);
             }
         }
         holder.answerSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -50,14 +54,21 @@ public class TestAdapter extends RecyclerView.Adapter<TestViewHolder> {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.btn1:
-                        questionBean.score = 2;
-                        break;
-                    case R.id.btn2:
                         questionBean.score = 1;
                         break;
-                    case R.id.btn3:
-                        questionBean.score = 0;
+                    case R.id.btn2:
+                        questionBean.score = 2;
                         break;
+                    case R.id.btn3:
+                        questionBean.score = 3;
+                        break;
+                    case R.id.btn4:
+                        questionBean.score = 4;
+                        break;
+                    case R.id.btn5:
+                        questionBean.score = 5;
+                        break;
+
                 }
             }
         });

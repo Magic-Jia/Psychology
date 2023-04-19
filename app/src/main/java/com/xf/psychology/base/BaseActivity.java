@@ -1,11 +1,16 @@
 package com.xf.psychology.base;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 
 import com.jaeger.library.StatusBarUtil;
@@ -21,6 +26,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         findViewsById();
         initListener();
         initData();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
+        }
+
         View backBtn = findViewById(R.id.backBtn);
         if (backBtn!=null){
             backBtn.setOnClickListener(new View.OnClickListener() {
