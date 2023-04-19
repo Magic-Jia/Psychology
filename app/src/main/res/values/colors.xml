@@ -14,5 +14,5 @@
     <color name="danger">#DD2C00</color>
     <color name="bfbfbf">#bfbfbf</color>
     <color name="cutePink">#f43a68</color>
-
+    <color name="virtual_button_color">#FF0000</color>
 </resources>

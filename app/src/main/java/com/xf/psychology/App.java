@@ -94,8 +94,8 @@ public class App extends Application {
         fmBean.fmAuthor = "立夏";
         fmBean.fmFilePath = "https://freetyst.nf.migu.cn/public%2Fproduct5th%2Fproduct35%2F2019%2F10%2F2116%2F2019%E5%B9%B410%E6%9C%8808%E6%97%A518%E7%82%B907%E5%88%86%E7%B4%A7%E6%80%A5%E5%86%85%E5%AE%B9%E5%87%86%E5%85%A5%E6%AD%A3%E4%B8%9C22%E9%A6%96342231%2F%E5%85%A8%E6%9B%B2%E8%AF%95%E5%90%AC%2FMp3_64_22_16%2F6005662GRNF.mp3?Key=9af3cfbcd84ba8e2&Tim=1646625544549&channelid=01&msisdn=68245049b2454439922108a34286fec0";
         fmBean.faceFilePath = "https://img2.woyaogexing.com/2022/03/05/f928f04b56c94d1ca927c4bb4bcf293e!400x400.jpeg";
-        fmBean.fmTitle = "冬日枕边书 | 在复杂的世界里，做一个简单的人";
-        fmBean.fmSecTitle = "“我特别喜欢的一个概念是：用生命影响生命。这本书传递了一个新的视角：万物都在见证着万物，只是有时候我们不知道。 这本书每一帧画面背后都是一个能让你展开想象的故事，夏布特的画面充斥着黑和白的纯净孤独感。这种感觉在一个描绘光阴的故事里，让人格外有感触。”";
+        fmBean.fmTitle = "盛夏初春 | 你与我的距离忽远忽近";
+        fmBean.fmSecTitle = "“勇气并不是没有恐惧，而是面对恐惧后能够继续前行。”";
         DBCreator.getFMDao().insert(fmBean);
     }
 
@@ -107,8 +107,8 @@ public class App extends Application {
         fmBean.fmAuthor = "Z先生";
         fmBean.fmFilePath = "https://freetyst.nf.migu.cn/public%2Fproduct5th%2Fproduct35%2F2019%2F10%2F2116%2F2019%E5%B9%B410%E6%9C%8808%E6%97%A518%E7%82%B907%E5%88%86%E7%B4%A7%E6%80%A5%E5%86%85%E5%AE%B9%E5%87%86%E5%85%A5%E6%AD%A3%E4%B8%9C22%E9%A6%96342231%2F%E5%85%A8%E6%9B%B2%E8%AF%95%E5%90%AC%2FMp3_64_22_16%2F6005662GRNF.mp3?Key=9af3cfbcd84ba8e2&Tim=1646625544549&channelid=01&msisdn=68245049b2454439922108a34286fec0";
         fmBean.faceFilePath = "https://img2.woyaogexing.com/2022/02/26/60cbe32a7e45460db52db562898ca0c0!400x400.jpeg";
-        fmBean.fmTitle = "为什么要学习理解他人？";
-        fmBean.fmSecTitle = "这个世界上有很多加分题：做了会得到更多，不做也不会有别的损失。我们无需只是因为累不累苦不苦而做不做，也无需因为得到的好处多不多而做不做，我们只是去问：性价比如何，值不值。";
+        fmBean.fmTitle = "心理调节可以通过冥想、运动、社交支持等方式来实现。";
+        fmBean.fmSecTitle = "";
         DBCreator.getFMDao().insert(fmBean);
     }
 
@@ -215,15 +215,13 @@ public class App extends Application {
         questionBean.time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         DBCreator.getQuestionDao().insert(questionBean);
         AnswerBean answerBean = new AnswerBean();
-        answerBean.answer = "心理健康是一个人心理和情感状态的积极指标，表现为情感的平衡、适应性强、自我意识高、自我肯定、对生活有积极的态度和对社会有益的互动方式等。维护心理健康是一个综合性问题，包括以下方面：\n" +
+        answerBean.answer = "保持积极的生活方式、学会有效应对压力、建立良好的支持体系以及在需要时寻求专业帮助，是维护心理健康的重要方面。\n" +
                 "\n" +
-                "积极的生活方式：包括充足的睡眠、健康的饮食、持续的运动和减少不良习惯（如吸烟、酗酒等）。\n" +
+                "良好的情感管理能够有效缓解情绪问题，维护心理健康。\n" +
                 "\n" +
-                "学会应对压力：人们无法避免面对各种压力，但可以学会应对它们。方法包括深呼吸、缓慢计数、肌肉放松、心理干预等。\n" +
+                "培养积极的心态、接受自我并与他人保持良好的关系，有助于提高心理素质。\n" +
                 "\n" +
-                "建立支持体系：与家人、朋友和同事建立亲密关系，寻求安慰、支持和帮助，可以降低心理压力和防止心理疾病的发生。\n" +
-                "\n" +
-                "寻求专业帮助：如果情况严重，影响日常生活，建议寻求专业心理医生的帮助，获得恰当的药物治疗或心理治疗。";
+                "坚持适度的休息、放松身心，避免过度疲劳和紧张压力，是保持心理健康的重要保障。";
         answerBean.answererIconPath = CNIcon;
         answerBean.answererId = 1;
         answerBean.answererNickName = "杜瑞翔";
@@ -244,30 +242,29 @@ public class App extends Application {
         shareBeanXF.authorNickName = userCN.name;
         shareBeanXF.authorIcon = userCN.iconPath;
         shareBeanXF.authorId = userCN.id;
-        shareBeanXF.content = "讨好型人格具有什么特征？\n" +
+        shareBeanXF.content ="自卑型人格具有什么特征？\n" +
                 "\n" +
-                "1、害怕说出自己内心的想法\n" +
-                "觉得自己弱势，一旦说出自己的想法就会感觉被孤立，担心不被他人接纳，更害怕他人的攻击，所以他们总是把自己真实想法藏在心里，而不是完全大胆勇敢的表露出来。\n" +
+                "1、过度自我批评\n" +
+                "自卑型人格的人总是对自己过度挑剔，不管做得再好，也会觉得自己不够好，甚至会因为自己的一点小缺点而深陷自责之中。\n" +
                 "\n" +
-                "2、喜欢主动道歉\n" +
-                "害怕产生冲突，希望用道歉的方式结束冲突，这是讨好型人格的人处理事情的主要方式。\n" +
+                "2、害怕批评和拒绝\n" +
+                "自卑型人格的人往往害怕别人对自己的批评和拒绝，他们担心自己的不足会被别人看到，因此总是试图避免与人发生冲突，不愿表达自己的想法和需求。\n" +
                 "\n" +
-                "3、会迎合他人\n" +
-                "在社交交往中，他们对待别人的观点经常会说，你说得很对，这种迎合来自他们内心的胆怯，总是觉得别人比自己要厉害，所以会把自己降得很低。\n" +
-                "她们总是担心别人不高兴，但是却忘记了自我的情绪，自我声音是什么。\n" +
+                "3、缺乏自信\n" +
+                "自卑型人格的人常常缺乏自信，他们对自己的能力和价值感缺乏信心，总是认为别人比自己更好，更有能力，很难发现自己的优点和长处。\n" +
                 "\n" +
-                "4、不懂得拒绝\n" +
-                "害怕拒绝，其实也是因为担心一旦拒绝他人，他人就会十分厌恶她们，而不拒绝，则是她们假装维持良好的关系，这可以减少她们内心的内疚与负罪情绪，但是无形中担负着巨大的心理压力，更让自己活得很累。\n" +
+                "4、避免面对陌生环境\n" +
+                "自卑型人格的人往往害怕面对陌生环境，他们不敢面对新的挑战和机会，害怕自己无法胜任，这样的情况下，他们会选择逃避和退缩。\n" +
                 "\n" +
-                "5、没有原则和底线\n" +
-                "在人际交往中，讨好型人总是忽略了自己，她们希望和她人保持和谐的关系，所以在交往中，有时会变得没有原则和底线，一味讨好他人，在这种相处模式中，反而无法赢得她人尊重。\n" +
+                "5、过度依赖他人\n" +
+                "自卑型人格的人常常过度依赖他人，希望通过与他人的关系来获得认可和安全感，缺乏独立思考和自我决策的能力。\n" +
                 "\n" +
-                "总结：讨好型人格最大的特点就是掩藏自己情绪非常害怕起冲突，所以她们会压抑自我的需求。";
+                "总结：自卑型人格最大的特点就是对自己的过度挑剔和不自信，缺乏独立思考和自我决策的能力，过度依赖他人，害怕批评和拒绝，避免面对陌生环境。";
 
         DBCreator.getShareDao().insert(shareBeanXF);
         //添加一条评论
         ShareCommentBean commentBean1 = new ShareCommentBean();
-        commentBean1.comment = "讨好型人格背后的原因更值得去探究，我记得自己那时候很怕被孤立，孤独。当我一步步突破过来，也算是“伤痕累累”，涅磐重生，直到真正找到自己，学会拒绝，长成一个独立的我。是真的找到自己和成长后的自己。";
+        commentBean1.comment = "\"自卑型人格背后的原因更值得去探究，我记得自己那时候总是觉得自己不够好，不如别人，缺乏自信心。我害怕被别人发现我的缺点，担心被嘲笑或者排斥。长期以来，我总是躲在自己的内心世界里，不愿意和别人交流，怕被拒绝和伤害。直到意识到这种情况不对劲，我才开始努力克服自卑，寻找自信，学会了逐渐敞开心扉，尝试接受自己的缺点，慢慢成长为一个自信独立的人。";
         commentBean1.shareId = 1;
         commentBean1.initiatorId = 2;
         commentBean1.initiatorNickName = "贾旭明";
@@ -315,17 +312,26 @@ public class App extends Application {
         shareBeanXF.authorNickName = userCN.name;
         shareBeanXF.authorIcon = userCN.iconPath;
         shareBeanXF.authorId = userCN.id;
-        shareBeanXF.content = "如何区分抑郁和消极情绪\uD83E\uDDD0\n" +
-                "\uD83C\uDF69抑郁带来的症状主要有情绪感受、行为活动和身体反应三个方面。\n" +
-                "·在情绪感受上，我们可以体验到情绪低落、绝望、烦躁易怒和自我厌恶感；\n" +
-                "·在行为活动上，我们会丧失对生活的兴趣，回避日常活动和社交生活，无法集中精力，感到乏力、疲惫；\n" +
-                "·在身体反应上，可能会伴有失眠、饮食障碍和疼痛不适等生理反应。\n" +
-                "\uD83C\uDF6B如果仅仅是某些方面的症状（比如只是失眠、心情不好），并在短时间内可以得到缓解，就大概率不归属“抑郁”。此时的消极情绪或症状是人们对于负面事物的正常反应，是健康的，不需要担心。";
+        shareBeanXF.content = "大学生如何正确与父母相处？\n" +
+                "\n" +
+                "1、沟通是关键\n" +
+                "在和父母交流时，要注意避免一味的争辩，而要保持耐心和冷静，理性地表达自己的想法，同时也要注意倾听父母的观点，尊重他们的意见，通过双方的沟通，可以更好地解决问题，增进彼此的了解。\n" +
+                "\n" +
+                "2、尊重父母的决定\n" +
+                "在一些重要的决定上，例如学业、职业、婚姻等，父母可能会有不同的期望和想法，这时候大学生可以尝试从父母的角度去理解他们的想法，并尊重他们的决定。即使最终决定和父母的想法不一样，也应该坦诚地向他们表达自己的想法，并保持良好的沟通和关系。\n" +
+                "\n" +
+                "3、定期与父母联系\n" +
+                "在大学校园里，大学生可能会因为学业和社交等原因而疏远了父母。但是，定期与父母联系可以让父母感受到自己的关心和爱，也可以让自己感受到家的温暖和支持。可以通过电话、短信、视频等多种方式与父母保持联系。\n" +
+                "\n" +
+                "4、做好家庭责任\n" +
+                "尽管大学生已经成年，但是在家庭中仍然有自己的责任。例如，可以帮助家里做家务、照顾年迈的父母等，这些都可以体现出自己的成熟和负责。同时也要注意与父母的情感沟通，关心他们的生活和身体健康，让他们感受到自己的关心和爱。\n" +
+                "\n" +
+                "总结：大学生要正确对待与父母的关系，保持良好的沟通和理解，尊重父母的决定，定期与父母联系，同时也要承担家庭责任，让家庭关系更加和谐和幸福。";
 
         DBCreator.getShareDao().insert(shareBeanXF);
         //添加一条评论
         ShareCommentBean commentBean1 = new ShareCommentBean();
-        commentBean1.comment = "我觉得我抑郁了，不知道怎么走出来，难过";
+        commentBean1.comment = "和父母相处真的很困扰我，看到你的建议我会好好借鉴的！！！";
         commentBean1.shareId = 3;
         commentBean1.initiatorId = 2;
         commentBean1.initiatorNickName = "贾旭明";

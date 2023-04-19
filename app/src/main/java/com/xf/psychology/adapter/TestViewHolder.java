@@ -18,6 +18,8 @@ class TestViewHolder extends RecyclerView.ViewHolder {
     public RadioButton btn1;
     public RadioButton btn2;
     public RadioButton btn3;
+    public RadioButton btn4;
+    public RadioButton btn5;
     public RadioGroup answerSelect;
     public TestViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,6 +28,8 @@ class TestViewHolder extends RecyclerView.ViewHolder {
         btn1 = itemView.findViewById(R.id.btn1);
         btn2 = itemView.findViewById(R.id.btn2);
         btn3 = itemView.findViewById(R.id.btn3);
+        btn4 = itemView.findViewById(R.id.btn4);
+        btn5 = itemView.findViewById(R.id.btn5);
     }
 
 }

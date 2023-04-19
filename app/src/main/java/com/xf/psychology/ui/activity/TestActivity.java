@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +27,8 @@ public class TestActivity extends BaseActivity {
     private View submit;
     private List<TestBean> data = new ArrayList<>();
     private TestAdapter adapter = new TestAdapter(data);
-
+    private Boolean Complete = true;
+    private int Number = 0;
     @Override
     protected void initListener() {
 //        评价参考：
@@ -44,22 +46,27 @@ public class TestActivity extends BaseActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Number = 0;
                 int totalScore = 0;
                 for (int i = 0; i < data.size(); i++) {
                     TestBean questionBean = data.get(i);
                     if (questionBean.score == -1) {
-                        toast("第" + (i + 1) + "题未做，请完成");
+                        Complete = false;
+                        Number++;
                     } else {
                         totalScore += questionBean.score;
                     }
                 }
                 showMsgDialog(totalScore);
-
             }
         });
     }
 
     private void showMsgDialog(int totalScore) {
+        if(Number != 0) {
+            Toast.makeText(this,"您还有"+ (Number) + "道题没完成，请继续完成",Toast.LENGTH_SHORT).show();
+            return;
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_msg, null, false);
         builder.setView(inflate);
@@ -71,8 +78,8 @@ public class TestActivity extends BaseActivity {
         titleView.setText(title);
         String msg = "";
         AlertDialog alertDialog = builder.create();
-        if (totalScore <= 8) {
-            msg = "你的心理非常健康，请你放心。";
+        if (totalScore <= 50) {
+            msg = "心理状况良好，拥有较好的自我掌控和情绪管理能力，对生活充满信心和积极的态度。";
             cancelView.setText("关闭");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,8 +88,8 @@ public class TestActivity extends BaseActivity {
                     toast("测试记录已入库");
                 }
             });
-        } else if (totalScore <= 16) {
-            msg = "你的心理大致还属于健康的范围，但应有所注意，也可以找老师或同学聊聊。";
+        } else if (totalScore <= 80) {
+            msg = "心理状况一般，需要进一步关注自身的情绪管理和心理健康，建议寻求专业帮助。";
             cancelView.setText("关闭");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,8 +99,8 @@ public class TestActivity extends BaseActivity {
                     finish();
                 }
             });
-        } else if (totalScore <= 30) {
-            msg = "你在心理方面有了一些障碍，应采取适当的方法进行调适，或找心理辅导老师帮助你。";
+        } else if (totalScore <= 120) {
+            msg = "心理状况较差，需要及时寻求专业帮助，可能存在情绪失控、焦虑、抑郁等风险。";
             cancelView.setText("去找老师咨询");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,9 +109,8 @@ public class TestActivity extends BaseActivity {
                     finish();
                 }
             });
-        } else if (totalScore <= 40) {
-
-            msg = "你有可能患了某些心理疾病，应找专门的心理医生进行检查治疗。";
+        } else if (totalScore <= 160) {
+            msg = "心理状况差，需要尽快寻求专业帮助，可能存在较为严重的情绪失控、抑郁、焦虑、创伤后应激障碍等问题";
             cancelView.setText("去找老师咨询");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,7 +120,7 @@ public class TestActivity extends BaseActivity {
                 }
             });
         } else {
-            msg = "你有较严重的心理障碍，应及时找专门的心理医生治疗";
+            msg = "心理状况非常差，需要紧急寻求专业帮助，可能存在严重的心理问题，包括但不限于自杀倾向、精神分裂症、人格障碍等。";
             cancelView.setText("去找老师咨询");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -139,46 +145,46 @@ public class TestActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        data.add(new TestBean("1. 平时不知为什么总觉得心慌意乱，坐立不安。"));
-        data.add(new TestBean("2. 上床后，怎么也睡不着，即使睡着也容易惊醒。"));
-        data.add(new TestBean("3. 经常做恶梦，惊恐不安，早晨醒来就感到倦怠无力、焦虑烦躁。"));
-        data.add(new TestBean("4. 经常早醒1-2小时 ，醒后很难再入睡。"));
-        data.add(new TestBean("5. 学习的压力常使自己感到非常烦躁，讨厌学习。"));
-        data.add(new TestBean("6. 读书看报甚至在课堂上也不能专心一致，往往自己也搞不清在想什么。"));
-        data.add(new TestBean("7. 遇到不称心的事情便较长时间地沉默少言。"));
-        data.add(new TestBean("8. 感到很多事情不称心，无端发火。"));
-        data.add(new TestBean("9. 哪怕是一件小事情，也总是很放不开，整日思索。"));
-        data.add(new TestBean("10. 感到现实生活中没有什么事情能引起自己的乐趣，郁郁寡欢。"));
-        data.add(new TestBean("11. 老师讲概念，常常听不懂，有时懂得快忘得也快。"));
-        data.add(new TestBean("12. 遇到问题常常举棋不定，迟疑再三。"));
-        data.add(new TestBean("13. 经常与人争吵发火，过后又后悔不已。"));
-        data.add(new TestBean("14. 经常追悔自己做过的事，有负疚感。"));
-        data.add(new TestBean("15. 一遇到考试，即使有准备也紧张焦虑。"));
-        data.add(new TestBean("16. 一遇挫折，便心灰意冷，丧失信心。"));
-        data.add(new TestBean("17. 非常害怕失败，行动前总是提心吊胆，畏首畏尾。"));
-        data.add(new TestBean("18. 感情脆弱，稍不顺心，就暗自流泪。"));
-        data.add(new TestBean("19. 自己瞧不起自己，觉得别人总在嘲笑自己。"));
-        data.add(new TestBean("20. 喜欢跟自己年幼或能力不如自己的人一起玩或比赛。"));
-        data.add(new TestBean("21. 感到没有人理解自己，烦闷时别人很难使自己高兴。"));
-        data.add(new TestBean("22. 发现别人在窃窃私语，便怀疑是在背后议论自己。"));
-        data.add(new TestBean("23. 对别人取得的成绩和荣誉常常表示怀疑，甚至嫉妒。"));
-        data.add(new TestBean("24. 缺乏安全感，总觉得别人要加害自己。"));
-        data.add(new TestBean("25. 参加春游等集体活动时，总有孤独感。"));
-        data.add(new TestBean("26. 害怕见陌生人，人多时说话就脸红。"));
-        data.add(new TestBean("27. 在黑夜行走或独自在家有恐惧感。"));
-        data.add(new TestBean("28. 一旦离开父母，心里就不踏实。"));
-        data.add(new TestBean("29. 经常怀疑自己接触的东西不干净，反复洗手或换衣服，对清洁极端注意。"));
-        data.add(new TestBean("30. 担心是否锁门和可能着火，反复检查，经常躺在床上又起来确认，或刚一出门又返回检查。"));
-        data.add(new TestBean("31. 站在经常有人自杀的场所、悬崖边、大厦顶、阳台上，有摇摇晃晃要跳下去的感觉。"));
-        data.add(new TestBean("32. 对他人的疾病非常敏感，经常打听，深怕自己也身患同病。"));
-        data.add(new TestBean("33. 对特定的事物、交通工具（电车、公共汽车等）、尖状物及白色墙壁等稍微奇怪的东西有恐怖倾向。"));
-        data.add(new TestBean("34. 经常怀疑自己发育不良。"));
-        data.add(new TestBean("35. 一旦与异XXXXX往就脸红心慌或想入非非。"));
-        data.add(new TestBean("36. 对某个异性伙伴的每一个细微行为都很注意。"));
-        data.add(new TestBean("37. 怀疑自己患了癌症等严重不治之症，反复看医书或去医院检查。"));
-        data.add(new TestBean("38. 经常无端头痛，并依赖止痛或镇静药。"));
-        data.add(new TestBean("39. 经常有离家出走或脱离集体的想法。"));
-        data.add(new TestBean("40. 感到内心痛苦无法解脱，只能自伤或自杀。"));
+        data.add(new TestBean("1.在过去的一年中，你是否经常感到孤独和无助？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("2. 你觉得自己的性格特点是什么？","开朗","温和","独立","敏感","严谨"));
+        data.add(new TestBean("3. 你是否常常感到紧张和焦虑？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("4. 在生活中，你是否喜欢独处？","非常喜欢","比较喜欢","中立","不太喜欢","非常不喜欢"));
+        data.add(new TestBean("5. 你是否喜欢结交新朋友？","非常喜欢","比较喜欢","中立","不太喜欢","非常不喜欢"));
+        data.add(new TestBean("6. 你认为自己有多乐观？","非常乐观","比较乐观","中立","不太乐观","非常不乐观"));
+        data.add(new TestBean("7. 你认为自己有多自信？","非常自信","比较自信","中立","不太自信","非常不自信"));
+        data.add(new TestBean("8. 在困难面前，你是否容易放弃？","从不放弃","偶尔放弃","有时放弃","经常放弃","总是放弃"));
+        data.add(new TestBean("9. 你是否容易受他人的影响？","从不受影响","偶尔受影响","有时受影响","经常受影响","总是受影响"));
+        data.add(new TestBean("10. 你是否喜欢挑战自己？","非常喜欢","比较喜欢","中立","不太喜欢","非常不喜欢"));
+        data.add(new TestBean("11. 你是否经常感到疲劳和无力？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("12. 你对未来有什么打算和规划？","有明确的规划","有模糊的规划","没有规划","对未来没有想法","觉得未来充满不确定性"));
+        data.add(new TestBean("13. 你是否容易感到沮丧和失落？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("14. 你是否容易和别人产生冲突？","从不产生冲突","偶尔产生冲突","有时产生冲突","经常产生冲突","总是产生冲突"));
+        data.add(new TestBean("15. 你是否擅长表达自己的情感？","非常擅长","比较擅长","一般般","不太擅长","非常不擅长"));
+        data.add(new TestBean("16. 你认为自己的人际关系良好吗？","非常良好","比较良好","一般般","不太良好","非常不良好"));
+        data.add(new TestBean("17. 你是否有强烈的好奇心？","非常强烈","比较强烈","中等程度","不太强烈","非常不强烈"));
+        data.add(new TestBean("18. 你是否有独立思考和判断问题的能力？","非常有","比较有","一般般","不太有","非常没有"));
+        data.add(new TestBean("19. 在遇到问题时，你会如何处理？","马上解决","思考一会儿","寻求帮助","等待时间解决","放弃解决"));
+        data.add(new TestBean("20. 你是否有稳定的情感和情绪？","非常稳定","比较稳定","一般般","不太稳定","非常不稳定"));
+        data.add(new TestBean("21. 你是否经常为自己的行为感到后悔？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("22. 你认为自己有多善于沟通？","非常擅长","比较擅长","一般般","不太擅长","非常不擅长"));
+        data.add(new TestBean("23. 你是否有自律的习惯？","非常有","比较有","一般般","不太有","非常没有"));
+        data.add(new TestBean("24. 你是否容易受到他人的影响？","从不受影响","偶尔受影响","有时受影响","经常受影响","总是受影响"));
+        data.add(new TestBean("25. 你是否有兴趣探索新事物？","非常有","比较有","一般般","不太有","非常没有"));
+        data.add(new TestBean("26. 你是否乐于接受挑战？","非常乐于接受","比较乐于接受","一般般","不太乐于接受","非常不乐于接受"));
+        data.add(new TestBean("27. 你是否经常感到焦虑或紧张？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("28. 你认为自己有多容易接受新观点和思想？","非常容易","比较容易","一般般","不太容易","非常不容易"));
+        data.add(new TestBean("29. 你是否有坚定的信念和价值观？","非常有","比较有","一般般","不太有","非常没有"));
+        data.add(new TestBean("30. 你是否容易感到孤独？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
+        data.add(new TestBean("31. 你是否经常自我反思和审视自己的行为？","非常经常","比较经常","一般般","不太经常","非常不经常"));
+        data.add(new TestBean("32. 你是否喜欢与他人合作？","非常喜欢","比较喜欢","中立","不太喜欢","非常不喜欢"));
+        data.add(new TestBean("33. 你是否有足够的自信和自尊心？","非常有","比较有","一般般","不太有","非常没有"));
+        data.add(new TestBean("34. 你是否愿意为自己的梦想和目标而努力？","非常愿意","比较愿意","一般般","不太愿意","非常不愿意"));
+        data.add(new TestBean("35. 你是否习惯于寻求帮助和支持？","经常寻求","偶尔寻求","有时寻求","不太寻求","从不寻求"));
+        data.add(new TestBean("36. 你是否有控制欲或支配欲？","从不有","偶尔有","有时有","经常有","总是有"));
+        data.add(new TestBean("37. 你是否对未来充满希望和信心？","非常充满","比较充满","一般般","不太充满","非常没有"));
+        data.add(new TestBean("38. 你是否喜欢冒险和探险？","非常喜欢","比较喜欢","中立","不太喜欢","非常不喜欢"));
+        data.add(new TestBean("39. 你是否愿意为了自己的利益而与他人竞争？","非常愿意","比较愿意","一般般","不太愿意","非常不愿意"));
+        data.add(new TestBean("40. 你是否常常感到无助和无能为力？","从未感到","偶尔感到","有时感到","经常感到","总是感到"));
         questionRecycler.setAdapter(adapter);
     }
 
