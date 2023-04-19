@@ -100,7 +100,17 @@ public class TestActivity extends BaseActivity {
                 }
             });
         } else if (totalScore <= 120) {
-            msg = "心理状况较差，需要及时寻求专业帮助，可能存在情绪失控、焦虑、抑郁等问题。";
+            msg = "心理状况较差，需要及时寻求专业帮助，可能存在情绪失控、焦虑、抑郁等风险。";
+            cancelView.setText("去找老师咨询");
+            cancelView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    finish();
+                }
+            });
+        } else if (totalScore <= 160) {
+            msg = "心理状况差，需要尽快寻求专业帮助，可能存在较为严重的情绪失控、抑郁、焦虑、创伤后应激障碍等问题";
             cancelView.setText("去找老师咨询");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -110,8 +120,7 @@ public class TestActivity extends BaseActivity {
                 }
             });
         } else {
-
-            msg = "你有可能患了严重的心理问题，需要紧急寻求专业帮助。";
+            msg = "心理状况非常差，需要紧急寻求专业帮助，可能存在严重的心理问题，包括但不限于自杀倾向、精神分裂症、人格障碍等。";
             cancelView.setText("去找老师咨询");
             cancelView.setOnClickListener(new View.OnClickListener() {
                 @Override
