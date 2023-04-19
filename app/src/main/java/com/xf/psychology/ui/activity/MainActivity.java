@@ -1,15 +1,11 @@
 package com.xf.psychology.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -24,7 +20,6 @@ import com.xf.psychology.ui.fragment.HomeFragment;
 import com.xf.psychology.ui.fragment.MineFragment;
 import com.xf.psychology.ui.fragment.SleepFragment;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +42,7 @@ public class MainActivity extends BaseActivity {
 
         tabs.add(new Tab("首页", R.drawable.icon_home, R.drawable.icon_home_un));
         tabs.add(new Tab("文章", R.drawable.ic_wz, R.drawable.ic_wz_un));
-        tabs.add(new Tab("睡眠", R.drawable.ic_sleep, R.drawable.ic_sleep_un));
+        tabs.add(new Tab("睡眠", R.drawable.sleep_pic, R.drawable.ic_sleep_un));
         tabs.add(new Tab("我的", R.drawable.icon_mine, R.drawable.icon_mine_un));
         fragments.add(HomeFragment.newInstance());
         fragments.add(ArticleFragment.newInstance());
