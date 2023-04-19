@@ -15,62 +15,68 @@
         android:text="1. 平时不知为什么总觉得心慌意乱，坐立不安。"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <RadioGroup
         android:id="@+id/answerSelect"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_height="wrap_content">
+
         <RadioButton
             android:id="@+id/btn1"
-            android:buttonTint="@color/colorPrimary"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:textSize="20dp"
-            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
             android:text="❀"
             android:textColor="@color/colorPrimary"
-            />
+            android:textSize="20dp" />
         <RadioButton
             android:id="@+id/btn2"
             android:buttonTint="@color/colorPrimary"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:layout_height="wrap_content"
-            android:text="❂"
+            android:layout_height="0dp"
+            android:text="⚝"
             android:textColor="@color/colorPrimary"
             />
         <RadioButton
             android:id="@+id/btn3"
             android:buttonTint="@color/colorPrimary"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="❁"
             android:textColor="@color/colorPrimary"
             />
         <RadioButton
             android:id="@+id/btn4"
             android:buttonTint="@color/colorPrimary"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="♕"
             android:textColor="@color/colorPrimary"
             />
         <RadioButton
             android:id="@+id/btn5"
             android:buttonTint="@color/colorPrimary"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="♔"
             android:textColor="@color/colorPrimary"
             />
     </RadioGroup>
+
+    </LinearLayout>
 </LinearLayout>

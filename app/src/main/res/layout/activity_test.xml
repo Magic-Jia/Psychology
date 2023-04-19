@@ -43,7 +43,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:text="对以下40道题，如果感到“常常是”，选择▲号；“偶尔”是，选择■号；“完全没有”，选择★号。"
+        android:text="对以下40道题，请根据你的实际情况选择"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
