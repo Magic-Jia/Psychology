@@ -19,7 +19,8 @@ import com.xf.psychology.db.DBCreator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FansFragment extends BaseFragment {
+
+public class ShowFollowsFragment extends BaseFragment {
 
     private RecyclerView recycler;
 
@@ -28,35 +29,35 @@ public class FansFragment extends BaseFragment {
     private CommonAdapter<FollowBean> adapter = new CommonAdapter<FollowBean>(R.layout.item_user, users) {
         @Override
         public void bind(ViewHolder holder, FollowBean user, int position) {
-            holder.setText(R.id.user_name, user.bNickName);
-            holder.setText(R.id.follow,"关注");
-            if(DBCreator.getFollowDao().queryFollowByABId(user.bId,App.user.id)!=null){
+            holder.setText(R.id.user_name, user.aNickName);
+            holder.setText(R.id.follow,"已关注");
+            if(DBCreator.getFollowDao().queryFollowByABId(App.user.id,user.aId)!=null){
                 holder.setText(R.id.follow,"互相关注");
             }
             ImageView view = holder.getView(R.id.user_icon);
-            Glide.with(holder.itemView).load(user.bIconPath).into(view);
+            Glide.with(holder.itemView).load(user.aIconPath).into(view);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*进入对方用户界面*/
+
                 }
             });
         }
     };
 
-    public FansFragment(){
+    public ShowFollowsFragment(){
 
     }
 
-    public static FansFragment newInstance() {
+    public static ShowFollowsFragment newInstance() {
         Bundle args = new Bundle();
-        FansFragment fragment = new FansFragment();
+        ShowFollowsFragment fragment = new ShowFollowsFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     protected void initData() {
-        users.addAll(DBCreator.getFollowDao().queryFollowByAId(App.user.id));
+        users.addAll(DBCreator.getFollowDao().queryFollowByBId(App.user.id));
         recycler.setAdapter(adapter);
     }
 
@@ -69,7 +70,6 @@ public class FansFragment extends BaseFragment {
     }
 
     protected int getLayoutId() {
-        return R.layout.fragment_fans;
+        return R.layout.fragment_show_fans;
     }
-
 }

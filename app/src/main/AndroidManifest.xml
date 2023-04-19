@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.activity.StartSleepActivity"
             android:exported="true" />
         <activity
@@ -51,7 +54,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.ShareDetailActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
 
         <service android:name=".service.MusicService" />
 

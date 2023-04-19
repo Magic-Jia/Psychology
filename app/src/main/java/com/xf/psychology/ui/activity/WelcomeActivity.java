@@ -1,7 +1,6 @@
 package com.xf.psychology.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -40,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
         boolean firstIn =PreferenceUtil.getInstance().get("flag",true);
         Log.d("TAG", "onCreate: "+firstIn);
         if (!firstIn){
-            startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
             return;
         }
@@ -51,7 +50,7 @@ public class WelcomeActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                 finish();
             }
         });

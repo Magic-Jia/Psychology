@@ -1,8 +1,10 @@
 <resources>
-  <style name="NoActionBar" >
-  <item name="windowActionBar">false</item>
-  <item name="windowNoTitle">true</item>
-</style>
+  <style name="NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:navigationBarColor">#FFFFFFFF</item>
+  </style>
   <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
   <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

@@ -17,41 +17,37 @@ import com.xf.psychology.R;
 import com.xf.psychology.adapter.CommonAdapter;
 import com.xf.psychology.adapter.HappyShareAdapter;
 import com.xf.psychology.adapter.ViewHolder;
-import com.xf.psychology.base.BaseActivity;
 import com.xf.psychology.base.BaseFragment;
 import com.xf.psychology.bean.DoShareBean;
 import com.xf.psychology.bean.FollowBean;
 import com.xf.psychology.bean.ShareBeanXF;
 import com.xf.psychology.bean.ShareCommentBean;
 import com.xf.psychology.db.DBCreator;
-import com.xf.psychology.event.ShareSuccessEvent;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FollowFragment extends BaseFragment {
+
+public class RecommendFragment extends BaseFragment {
 
     private RecyclerView recycler;
 
     private List<DoShareBean> realData = new ArrayList<>();
     private HappyShareAdapter adapter = new HappyShareAdapter(realData);
 
-    public void FollowFragment(){
+    public void RecommendFragment(){
 
     }
 
-    public static FollowFragment newInstance() {
+    public static RecommendFragment newInstance() {
         Bundle args = new Bundle();
-        FollowFragment fragment = new FollowFragment();
+        RecommendFragment fragment = new RecommendFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     protected void initData() {
-        getFollowedShare();
+        getAllShare();
         recycler.setAdapter(adapter);
     }
 
@@ -64,36 +60,29 @@ public class FollowFragment extends BaseFragment {
     }
 
     protected int getLayoutId() {
-        return R.layout.fragment_follow;
+        return R.layout.fragment_recommend;
     }
 
 
-    private void getFollowedShare() {
+    private void getAllShare() {
                 realData.clear();
-                List<ShareBeanXF> tempDate = new ArrayList<>();
-                List<FollowBean> followBeans = DBCreator.getFollowDao().queryFollowByBId(App.user.id);
-                for (FollowBean followBean : followBeans) {
-                    List<ShareBeanXF> shareBeanXFS = DBCreator.getShareDao().queryByUser(followBean.aId);
-                    if (shareBeanXFS != null) {
-                        tempDate.addAll(shareBeanXFS);
-                    }
-                }
-                for (int i = tempDate.size() - 1; i >= 0; i--) {
-                    ShareBeanXF shareBeanXF = tempDate.get(i);
+                List<ShareBeanXF> shareBeanXFS = DBCreator.getShareDao().queryAll();
+                Log.d("TAG", "initData: " + shareBeanXFS);
+                for (int i = shareBeanXFS.size() - 1; i >= 0; i--) {
+                    ShareBeanXF shareBeanXF = shareBeanXFS.get(i);
                     DoShareBean doShareBean = new DoShareBean();
                     doShareBean.authorId = shareBeanXF.authorId;
                     doShareBean.authorNickName = shareBeanXF.authorNickName;
+                    doShareBean.authorIcon = shareBeanXF.authorIcon;
                     doShareBean.content = shareBeanXF.content;
                     doShareBean.shareId = shareBeanXF.id;
                     doShareBean.picPaths = shareBeanXF.picPaths;
-                    doShareBean.authorIcon = shareBeanXF.authorIcon;
-                    List<FollowBean> checkFollowBeans = DBCreator.getFollowDao().queryFollowByAId(doShareBean.authorId);
-                    for (FollowBean followBean : checkFollowBeans) {
+                    List<FollowBean> followBeans = DBCreator.getFollowDao().queryFollowByAId(doShareBean.authorId);
+                    for (FollowBean followBean : followBeans) {
                         if (followBean.bId == App.user.id) {
                             doShareBean.isFollow = true;
                         }
                     }
-
                     List<ShareCommentBean> shareCommentBeans = DBCreator.getShareCommentDao().queryByShareId(shareBeanXF.id);
                     doShareBean.messages = shareCommentBeans == null ? 0 : shareCommentBeans.size();
                     long l = System.currentTimeMillis() - shareBeanXF.time;
@@ -111,11 +100,5 @@ public class FollowFragment extends BaseFragment {
                     }
                     realData.add(doShareBean);
                 }
-    }
-
-    public void onResume() {
-        super.onResume();
-        initData();
-        // 更新数据和视图
     }
 }
