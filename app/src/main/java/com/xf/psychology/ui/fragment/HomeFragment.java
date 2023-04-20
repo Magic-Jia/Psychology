@@ -19,7 +19,6 @@ import com.xf.psychology.ui.activity.BookActivity;
 import com.xf.psychology.ui.activity.FMActivity;
 import com.xf.psychology.ui.activity.ActivityCenterActivity;
 import com.xf.psychology.ui.activity.SearchActivity;
-import com.xf.psychology.ui.activity.ShareFeelingActivity;
 import com.xf.psychology.ui.activity.TestActivity;
 
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ public class HomeFragment extends BaseFragment {
     private View homeActionBook;
     private View homeActionChat;
     private View homeActionFM;
-    private View homeActionShare;
     private CommonTabLayout tabLayout;
     private ViewPager viewPager;
     private List<Fragment> fragments = new ArrayList<>();
@@ -120,13 +118,6 @@ public class HomeFragment extends BaseFragment {
                 startActivity(new Intent(requireActivity(), BookActivity.class));
             }
         });
-        homeActionShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(requireActivity(), ShareFeelingActivity.class));
-
-            }
-        });
     }
 
     @Override
@@ -136,7 +127,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_home2;
+        return R.layout.fragment_home;
     }
 
     @Override
@@ -146,7 +137,6 @@ public class HomeFragment extends BaseFragment {
         homeActionChat = view.findViewById(R.id.homeActionChat);
         homeActionFM = view.findViewById(R.id.homeActionFM);
         searchBar = view.findViewById(R.id.searchBar);
-        homeActionShare = view.findViewById(R.id.homeActionShare);
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);
     }
@@ -196,5 +186,11 @@ public class HomeFragment extends BaseFragment {
         public int getTabUnselectedIcon() {
             return 0;
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+        initListener();
+        // 更新数据和视图
     }
 }
