@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.mysql.jdbc.Util;
 import com.xf.psychology.bean.AnswerBean;
 import com.xf.psychology.bean.BookBean;
 import com.xf.psychology.bean.ChatBean;
@@ -12,10 +13,15 @@ import com.xf.psychology.bean.QuestionBean;
 import com.xf.psychology.bean.ShareBeanXF;
 import com.xf.psychology.bean.ShareCommentBean;
 import com.xf.psychology.bean.UserBean;
+import com.xf.psychology.dao.UserDao;
 import com.xf.psychology.db.DBCreator;
+import com.xf.psychology.dao.ChatDao;
 import com.xf.psychology.util.PreferenceUtil;
 import com.xf.psychology.util.SomeUtil;
+import com.xf.psychology.utils.JDBCUtils;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +29,6 @@ import java.util.Date;
 public class App extends Application {
     private static Context context;
     public static UserBean user;
-
     private String CNIcon= "https://pic1.zhimg.com/v2-3fa13c445bcb89ce3227836a5e9d1ae9_r.jpg";
     private String JXMIcon = "https://img2.woyaogexing.com/2022/03/05/31b9d47de8db49868a51ad4437623142!400x400.jpeg";
 
@@ -55,14 +60,24 @@ public class App extends Application {
             DBCreator.getUserDao().registerUser(JXM);
 
             ChatBean chatbean = new ChatBean();
-            chatbean.sendId = 2;
-            chatbean.sendIconPath = DBCreator.getUserDao().queryUserByPhone("15122995997").iconPath;
-            chatbean.message = "你好我是你的心理医生贾旭明~~~";
-            chatbean.catchId = 1;
-            chatbean.catchIconPath = DBCreator.getUserDao().queryUserByPhone("15210669565").iconPath;
-            chatbean.messageId = 1;
-            chatbean.messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            DBCreator.getChatDao().insert(chatbean);
+            chatbean.setSendId(2);
+            chatbean.setSendIconPath(DBCreator.getUserDao().queryUserByPhone("15122995997").iconPath);
+            chatbean.setMessage("你好我是你的心理医生贾旭明~~~");
+            chatbean.setCatchId(1);
+            chatbean.setCatchIconPath(DBCreator.getUserDao().queryUserByPhone("15210669565").iconPath);
+            chatbean.setMessageId(1);
+            chatbean.setMessageTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            ChatDao chatDao = new ChatDao();
+            new Thread(){
+                @Override
+                public void run() {
+                    try {
+                        chatDao.insert(chatbean);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }.start();
             /*----------------------------动态----------------------------------------*/
             insertShare1();
             insertShare2();
@@ -349,7 +364,7 @@ public class App extends Application {
         return user != null;
     }
 
-    public static void logout() {
+    public static void logout() throws SQLException {
         PreferenceUtil.getInstance().remove("logger");
         user = null;
     }

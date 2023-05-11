@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:usesCleartextTraffic="true"
         android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/ic_logo"
@@ -11,7 +12,18 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".login"
+            android:exported="true" />
 
+        <service
+            android:name=".service.MP3Service"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.activity.MainActivity4"
+            android:exported="true" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true" />
@@ -37,12 +49,15 @@
             android:exported="true" />
         <activity
             android:name=".ui.activity.OnlineChatActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"/>
         <activity android:name=".ui.activity.UpBookActivity" />
         <activity android:name=".ui.activity.BookActivity" />
         <activity android:name=".ui.activity.FmListActivity" />
         <activity android:name=".ui.activity.FmUpActivity" />
-        <activity android:name=".ui.activity.MusicActivity" />
+        <activity
+            android:name=".ui.activity.MusicActivity"
+            android:exported="true" />
         <activity android:name=".ui.activity.FMActivity" />
         <activity android:name=".ui.activity.QuestionDetailActivity" />
         <activity android:name=".ui.activity.AnswerActivity" />

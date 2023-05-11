@@ -8,10 +8,8 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.xf.psychology.App;
-import com.xf.psychology.bean.ChatBean;
 import com.xf.psychology.db.dao.AnswerDao;
 import com.xf.psychology.db.dao.BookDao;
-import com.xf.psychology.db.dao.ChatDao;
 import com.xf.psychology.db.dao.FMDao;
 import com.xf.psychology.db.dao.FollowDao;
 import com.xf.psychology.db.dao.MessageDao;
@@ -90,7 +88,7 @@ public class DBCreator {
     public static BookDao getBookDao() {
         return db.getBookDao();
     }
-    public static ChatDao getChatDao() {
-        return db.getChatDao();
-    }
+//    public static ChatDao getChatDao() {
+//        return db.getChatDao();
+//    }
 }

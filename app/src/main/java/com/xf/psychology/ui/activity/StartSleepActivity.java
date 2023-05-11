@@ -35,8 +35,6 @@ import com.xf.psychology.ui.NbButton;
 
 import java.io.File;
 import java.io.IOException;
-
-
 public class StartSleepActivity extends AppCompatActivity {
 
     private static final int SAMPLE_RATE = 44100;

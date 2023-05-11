@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase;
 
 import com.xf.psychology.bean.AnswerBean;
 import com.xf.psychology.bean.BookBean;
-import com.xf.psychology.bean.ChatBean;
 import com.xf.psychology.bean.FMBean;
 import com.xf.psychology.bean.FollowBean;
 import com.xf.psychology.bean.MessageBeanXF;
@@ -17,7 +16,6 @@ import com.xf.psychology.bean.TestRecordXFBean;
 import com.xf.psychology.bean.UserBean;
 import com.xf.psychology.db.dao.AnswerDao;
 import com.xf.psychology.db.dao.BookDao;
-import com.xf.psychology.db.dao.ChatDao;
 import com.xf.psychology.db.dao.FMDao;
 import com.xf.psychology.db.dao.FollowDao;
 import com.xf.psychology.db.dao.MessageDao;
@@ -40,7 +38,6 @@ import com.xf.psychology.db.dao.UserDao;
         AnswerBean.class,
         FMBean.class,
         BookBean.class,
-        ChatBean.class,
         ShareLikes.class
 }, version = 1, exportSchema = false)
 public abstract class MyDB extends RoomDatabase {
@@ -61,5 +58,4 @@ public abstract class MyDB extends RoomDatabase {
 
     public abstract FMDao getFMDao();
     public abstract BookDao getBookDao();
-    public abstract ChatDao getChatDao();
 }

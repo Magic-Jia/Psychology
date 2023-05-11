@@ -152,7 +152,12 @@ public class LoginActivity extends AppCompatActivity {
 
         //密码输入正确，提示用户使用指纹进行登录
         Toast.makeText(this, "请使用指纹认证登录", Toast.LENGTH_SHORT).show();
-
+        UserBean RegisteredUser = DBCreator.getUserDao().queryUserByPhone(phoneEdit.getText().toString().trim());
+        App.user = RegisteredUser;
+        PreferenceUtil.getInstance().save("logger", RegisteredUser.phone);
+        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
         //检查设备是否支持指纹识别
         if (fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints()) {
             //启动指纹识别
@@ -162,13 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "设备不支持指纹识别，请使用其他方式登录", Toast.LENGTH_SHORT).show();
         }
     }
-
     //指纹识别回调
-
-
-
-
-
     // 在指纹认证的回调函数中设置认证状态
 
 }

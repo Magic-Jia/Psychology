@@ -10,7 +10,7 @@ public class FMBean implements Serializable {
     @PrimaryKey(autoGenerate = true)
     public int fmId;
     public String faceFilePath;
-    public String fmFilePath;
+    public String fmFilePath;//fm 文件路径
     public String fmAuthor;
     public String fmTitle;
     public String fmSecTitle;
@@ -18,7 +18,7 @@ public class FMBean implements Serializable {
     public int upId;
     public int type;
 
-    public boolean contains(String key) {
+    public boolean contains(String key) {//搜索
         return fmAuthor.contains(key) || fmTitle.contains(key) || fmSecTitle.contains(key) || up.contains(key);
     }
 }

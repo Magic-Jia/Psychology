@@ -69,22 +69,6 @@ public class FMActivity extends BaseActivity {
         }
     };
     private View emptyView;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-
-////        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                Intent intent = new Intent(Intent.ACTION_PICK);
-////                intent.setType("audio/*");
-////                startActivityForResult(intent, 100);
-////            }
-////        });
-//    }
-
     @Override
     protected void initListener() {
         uploadTv.setOnClickListener(new View.OnClickListener() {

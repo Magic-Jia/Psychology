@@ -31,7 +31,7 @@
             android:minWidth="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="啥东西"
+            android:text="qaq"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

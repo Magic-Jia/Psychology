@@ -29,6 +29,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.sql.SQLException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -96,7 +98,11 @@ public class MineFragment extends BaseFragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                App.logout();
+                try {
+                    App.logout();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 startActivity(new Intent(requireActivity(), LoginActivity.class));
                 requireActivity().finish();
             }

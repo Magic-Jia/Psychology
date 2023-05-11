@@ -14,12 +14,6 @@
     import android.widget.Button;
 
     import com.xf.psychology.R;
-
-
-    /**
-     * Created by tong.zhang on 2017/12/1.
-     */
-
     public class NbButton extends androidx.appcompat.widget.AppCompatButton {
 
         private int width;
