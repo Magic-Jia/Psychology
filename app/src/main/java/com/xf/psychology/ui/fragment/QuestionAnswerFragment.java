@@ -148,4 +148,9 @@ public class QuestionAnswerFragment extends BaseFragment {
 
                 }
     }
+    public void onResume() {
+        super.onResume();
+        initData();
+        // 更新数据和视图
+    }
 }

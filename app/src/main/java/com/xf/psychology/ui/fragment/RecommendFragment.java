@@ -101,4 +101,12 @@ public class RecommendFragment extends BaseFragment {
                     realData.add(doShareBean);
                 }
     }
+    public void onResume() {
+        super.onResume();
+        if (this.view != null) {
+            findViewsById(this.view);
+            initData();
+        }
+        // 更新数据和视图
+    }
 }

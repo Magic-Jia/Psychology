@@ -60,9 +60,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 tabLayout.setCurrentTab(position);
-                if(position == 0){
-                    fragments.get(0).onResume();
-                }
+                fragments.get(position).onResume();
             }
 
             @Override
@@ -190,7 +188,7 @@ public class HomeFragment extends BaseFragment {
 
     public void onResume() {
         super.onResume();
-        initListener();
-        // 更新数据和视图
+        /*initListener();
+        // 更新数据和视图*/
     }
 }

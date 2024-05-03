@@ -2,6 +2,7 @@ package com.xf.psychology.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -40,9 +41,9 @@ public class MainActivity extends BaseActivity {
         }
         StatusBarUtil.setTranslucent(this);
         StatusBarUtil.setColorNoTranslucent(this, getResources().getColor(R.color.colorPrimary));
+
+
         ArrayList<CustomTabEntity> tabs = new ArrayList<>();
-
-
         tabs.add(new Tab("首页", R.drawable.icon_home, R.drawable.icon_home_un));
         tabs.add(new Tab("文章", R.drawable.ic_wz, R.drawable.ic_wz_un));
         tabs.add(new Tab("",0,0));
@@ -102,7 +103,7 @@ public class MainActivity extends BaseActivity {
                 Intent intent = new Intent(MainActivity.this,ShareFeelingActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
-                fragments.get(0).onResume();
+                fragments.get(0).getChildFragmentManager().getFragment(new Bundle(),"");
             }
         });
     }
@@ -128,7 +129,7 @@ public class MainActivity extends BaseActivity {
         private List<Fragment> fragments;
 
         public MyViewPagerAdapter(List<Fragment> fragments, @NonNull FragmentManager fm) {
-            super(fm);
+            super(fm); // 在这里调用父类的构造函数
             this.fragments = fragments;
         }
 

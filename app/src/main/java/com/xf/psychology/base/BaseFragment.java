@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 
 public abstract class BaseFragment extends Fragment {
-
+    public View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutId(), container, false);
+        view = inflater.inflate(getLayoutId(), container, false);
         findViewsById(view);
         initListener();
         initData();
@@ -29,4 +29,5 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void findViewsById(View view);
 
     protected abstract int getLayoutId();
+
 }

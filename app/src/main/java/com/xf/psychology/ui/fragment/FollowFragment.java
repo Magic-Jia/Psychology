@@ -115,7 +115,8 @@ public class FollowFragment extends BaseFragment {
 
     public void onResume() {
         super.onResume();
-        initData();
+        getFollowedShare();
+        recycler.setAdapter(adapter);
         // 更新数据和视图
     }
 }
